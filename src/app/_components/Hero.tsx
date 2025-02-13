@@ -2,7 +2,7 @@ import Image from "next/image"
 
 const Hero = () => {
 	return (
-		<div className="pt-12">
+		<div>
 			<Image priority src="/hero.png" width={1000} height={0} alt="hero" className="w-[100vw]" />
 
 			<div className="flex justify-between items-start relative h-56 bg-[#1C1C1C] text-white">

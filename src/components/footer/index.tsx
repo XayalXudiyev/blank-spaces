@@ -28,7 +28,7 @@ const Footer = () => {
 					<p className="mt-2">Contact Us</p>
 				</div>
 				<div>
-					<p className="mt-2">Terms & Conditions</p>
+					<p>Terms & Conditions</p>
 					<p className="mt-2">GDPR policy</p>
 					<p className="mt-2">CSR policy</p>
 				</div>

@@ -5,6 +5,7 @@ import "./globals.css"
 import Footer from "@/components/footer"
 import Navbar from "@/components/header/Navbar"
 import { GoogleMapProvider } from "@/providers/google-map-provider"
+import ContactForm from "@/components/common/SendRequest"
 
 const proximanovaBlack = localFont({
 	src: "../fonts/Proximanova-Black.otf",
@@ -70,7 +71,8 @@ export default function RootLayout({
         antialiased`}
 			>
 				<Navbar />
-				{children}
+				<main className="pt-[3.3rem]">{children}</main>
+				<ContactForm />
 				<Footer />
 			</body>
 		</html>

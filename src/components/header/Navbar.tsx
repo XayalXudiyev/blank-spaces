@@ -60,8 +60,9 @@ const Navbar = () => {
 									{item.submenu ? (
 										<>
 											<NavigationMenuTrigger
-												className={`font-proximanova5  ${isParentActive ? "text-[#D2B48C]" : "data-[state=open]:text-[#D2B48C]"
-													}`}
+												className={`font-proximanova5  ${
+													isParentActive ? "text-[#D2B48C]" : "data-[state=open]:text-[#D2B48C]"
+												}`}
 											>
 												{item.name}
 											</NavigationMenuTrigger>
@@ -76,10 +77,11 @@ const Navbar = () => {
 																	<NavigationMenuLink asChild>
 																		<Link
 																			href={subItem.href}
-																			className={`block py-1 text-sm font-proximanova3 ${isSubActive
-																				? "text-[#D2B48C]"
-																				: "hover:bg-[#ECE0CF] focus:bg-[#E4D1B9]"
-																				}`}
+																			className={`block py-1 text-sm font-proximanova3 ${
+																				isSubActive
+																					? "text-[#D2B48C]"
+																					: "hover:bg-[#ECE0CF] focus:bg-[#E4D1B9]"
+																			}`}
 																		>
 																			{subItem.name}
 																		</Link>
@@ -96,8 +98,9 @@ const Navbar = () => {
 											<NavigationMenuLink asChild>
 												<Link
 													href={item.href}
-													className={`rounded-md text-sm ${isActive ? "text-[#D2B48C]" : "hover:text-[#D2B48C]"
-														}`}
+													className={`rounded-md text-sm ${
+														isActive ? "text-[#D2B48C]" : "hover:text-[#D2B48C]"
+													}`}
 												>
 													{item.name}
 												</Link>

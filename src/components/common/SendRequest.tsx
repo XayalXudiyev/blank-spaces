@@ -111,12 +111,20 @@ const ContactForm = () => {
 						<label htmlFor="message" className="text-sm font-medium">
 							Your message
 						</label>
-						<FormTextarea id="message" placeholder="Type your message here..." register={register} />
+						<FormTextarea
+							id="message"
+							placeholder="Type your message here..."
+							register={register}
+						/>
 					</div>
 					<div>
 						<div className="flex justify-center relative text-center py-3">
-							<Button size="sm" className="rounded-none" type="submit">
-								Contact Us
+							<Button
+								size="sm"
+								className="rounded-none bg-black text-white  p-0 px-5"
+								type="submit"
+							>
+								Contact us
 							</Button>
 						</div>
 					</div>
@@ -129,7 +137,6 @@ const ContactForm = () => {
 export default ContactForm
 
 const FormInput = ({ id, label, placeholder, validation, type = "text", register }: any) => {
-
 	return (
 		<div className="flex flex-col">
 			<label htmlFor={id} className="text-sm font-medium">
@@ -146,12 +153,7 @@ const FormInput = ({ id, label, placeholder, validation, type = "text", register
 	)
 }
 
-const FormTextarea = ({
-	id,
-	placeholder,
-	register
-}: any) => {
-
+const FormTextarea = ({ id, placeholder, register }: any) => {
 	return (
 		<Textarea
 			id={id}
@@ -162,14 +164,7 @@ const FormTextarea = ({
 	)
 }
 
-const FormSelect = ({
-	id,
-	label,
-	options,
-	validation,
-	register
-}: any) => {
-
+const FormSelect = ({ id, label, options, validation, register }: any) => {
 	return (
 		<div className="flex flex-col">
 			<label htmlFor={id} className="text-sm font-medium">

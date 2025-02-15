@@ -11,6 +11,9 @@ import {
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import LocaleSwitcher from "../localSwitcher/LocaleSwithcher"
+import { useTranslations } from "next-intl"
+import { Button } from "../ui/button"
 
 interface NavItem {
 	name: string
@@ -18,31 +21,33 @@ interface NavItem {
 	submenu?: NavItem[]
 }
 
-const navItems: NavItem[] = [
-	{
-		name: "Events",
-		submenu: [
-			{ name: "Corporate meetings", href: "/events/corporate-meetings" },
-			{ name: "Cocktail receptions", href: "/events/coctail-receptions" },
-			{ name: "Teambuilding", href: "/events/teambuilding" },
-			{ name: "Workshops", href: "/events/workshops" },
-			{ name: "Conference", href: "/events/conference" },
-			{ name: "Product launches", href: "/events/product-launches" },
-			{ name: "Birthday & Weddings", href: "/events/birthday-and-weddings" },
-		],
-	},
-	{
-		name: "Spaces",
-		submenu: [
-			{ name: "Blankspace Schuman", href: "/spaces/blankspace-schuman" },
-			{ name: "Blankspace Place du Luxembourg", href: "/spaces/blankspace-luxembourg" },
-		],
-	},
-	{ name: "Catering & Workshops", href: "/catering-and-workshops" },
-]
-
 const Navbar = () => {
 	const pathname = usePathname()
+	const t = useTranslations("navbar")
+
+	const navItems: NavItem[] = [
+		{
+			name: t("events"),
+			submenu: [
+				{ name: t("corporateMeetings"), href: "/events/corporate-meetings" },
+				{ name: t("coctailReceptions"), href: "/events/coctail-receptions" },
+				{ name: t("teambuilding"), href: "/events/teambuilding" },
+				{ name: t("workshops"), href: "/events/workshops" },
+				{ name: t("conference"), href: "/events/conference" },
+				{ name: t("productLaunches"), href: "/events/product-launches" },
+				{ name: t("birthdayAndWeddings"), href: "/events/birthday-and-weddings" },
+			],
+		},
+		{
+			name: t("spaces"),
+			submenu: [
+				{ name: t("blankspaceSchuman"), href: "/spaces/blankspace-schuman" },
+				{ name: t("blankspacePlaceDuLuxembourg"), href: "/spaces/blankspace-luxembourg" },
+			],
+		},
+		{ name: t("cateringAndWorkshops"), href: "/catering-and-workshops" },
+	];
+
 
 	return (
 		<nav className="fixed w-full flex items-center justify-center font-proximanova4 text-white bg-[#1C1C1C] z-50 ">
@@ -60,9 +65,8 @@ const Navbar = () => {
 									{item.submenu ? (
 										<>
 											<NavigationMenuTrigger
-												className={`font-proximanova5  ${
-													isParentActive ? "text-[#D2B48C]" : "data-[state=open]:text-[#D2B48C]"
-												}`}
+												className={`font-proximanova5  ${isParentActive ? "text-[#D2B48C]" : "data-[state=open]:text-[#D2B48C]"
+													}`}
 											>
 												{item.name}
 											</NavigationMenuTrigger>
@@ -77,11 +81,10 @@ const Navbar = () => {
 																	<NavigationMenuLink asChild>
 																		<Link
 																			href={subItem.href}
-																			className={`block py-1 text-sm font-proximanova3 ${
-																				isSubActive
-																					? "text-[#D2B48C]"
-																					: "hover:bg-[#ECE0CF] focus:bg-[#E4D1B9]"
-																			}`}
+																			className={`block py-1 text-sm font-proximanova3 ${isSubActive
+																				? "text-[#D2B48C]"
+																				: "hover:bg-[#ECE0CF] focus:bg-[#E4D1B9]"
+																				}`}
 																		>
 																			{subItem.name}
 																		</Link>
@@ -98,9 +101,8 @@ const Navbar = () => {
 											<NavigationMenuLink asChild>
 												<Link
 													href={item.href}
-													className={`rounded-md text-sm ${
-														isActive ? "text-[#D2B48C]" : "hover:text-[#D2B48C]"
-													}`}
+													className={`rounded-md text-sm ${isActive ? "text-[#D2B48C]" : "hover:text-[#D2B48C]"
+														}`}
 												>
 													{item.name}
 												</Link>
@@ -120,13 +122,16 @@ const Navbar = () => {
 				</Link>
 			</div>
 
-			<div className="absolute right-0 pr-16">
-				<Link
-					href="/contact"
-					className={`text-sm ${pathname === "/contact" ? "text-[#D2B48C]" : "hover:text-[#D2B48C]"}`}
-				>
-					Contact
-				</Link>
+			<div className="absolute right-0 pr-16 flex h-full items-center">
+				<LocaleSwitcher />
+				<Button size={"sm"} className={`first:bg-transparent hover:bg-transparent border rounded-none border-white ml-4 ${pathname === "/contact" ? "text-[#D2B48C] border-[#D2B48C] bg-transparent " : "hover:text-white bg-transparent"}`}>
+					<Link
+						href="/contact"
+						className={"text-sm px-1 "}
+					>
+						Contact us
+					</Link>
+				</Button>
 			</div>
 		</nav>
 	)

@@ -1,12 +1,31 @@
 "use client"
 
 import { Card, CardContent } from "@/components/ui/card"
-import { testimonials } from "@/constants/Companies"
 import useEmblaCarousel from "embla-carousel-react"
+import { useTranslations } from "next-intl"
 import Image from "next/image"
 import { useCallback, useEffect, useState } from "react"
-import { FaArrowDown, FaArrowLeftLong, FaArrowRightLong, FaArrowUp } from "react-icons/fa6"
+import { FaArrowDown, FaArrowUp } from "react-icons/fa6"
 import { IoIosArrowDown } from "react-icons/io"
+import MCI from "../../../public/companies/MCI.svg"
+import BelgianRailway from "../../../public/companies/belgianrailway.svg"
+import BirthdayParty from "../../../public/companies/birthday-party.svg"
+import Casa from "../../../public/companies/casa.svg"
+import Earma from "../../../public/companies/earma.svg"
+import Eca from "../../../public/companies/eca.svg"
+import Ellis from "../../../public/companies/ellis.svg"
+import Esae from "../../../public/companies/esae.svg"
+import EuroCommerce from "../../../public/companies/euro-commerce.svg"
+import EuropeanGreens from "../../../public/companies/european-greens.svg"
+import GreenMood from "../../../public/companies/greemood.svg"
+import Hilton from "../../../public/companies/hilton.svg"
+import KevinMurphyK from "../../../public/companies/kevin-murphy-K.svg"
+import KevinMurphy from "../../../public/companies/kevin-murphy.svg"
+import Marriage from "../../../public/companies/marriage.svg"
+import OliverWyman from "../../../public/companies/oliver-wyman.svg"
+import SolarPower from "../../../public/companies/solar-power.svg"
+import Una from "../../../public/companies/unaa.png"
+import UseBrussel from "../../../public/companies/use-brussels.svg"
 import { Button } from "../ui/button"
 
 interface ExpandedState {
@@ -14,10 +33,122 @@ interface ExpandedState {
 }
 
 function Testimonials() {
+	const t = useTranslations("testimonials")
 	const [emblaRef, emblaApi] = useEmblaCarousel({ axis: "y", loop: true })
 	const [carouselRef, carouselApi] = useEmblaCarousel({ axis: "y", loop: true })
 	const [selectedIndex, setSelectedIndex] = useState(10)
 	const [expanded, setExpanded] = useState<ExpandedState>({})
+
+	const testimonials = [
+		{
+			id: 4,
+			author: "",
+			icon: EuroCommerce,
+			description: t("EuroCommerce"),
+		},
+		{
+			id: 5,
+			author: "",
+			icon: Ellis,
+			description: t("Ellis"),
+		},
+		{
+			id: 6,
+			author: "Mercedes Porras",
+			icon: KevinMurphyK,
+			description: t("KevinMurphyK"),
+		},
+		{
+			id: 7,
+			author: "",
+			icon: OliverWyman,
+			description: t("OliverWyman"),
+		},
+		{
+			id: 8,
+			author: "Léa Terrien",
+			icon: SolarPower,
+			description: t("SolarPower"),
+		},
+		{
+			id: 9,
+			author: "Petra Skuljevic",
+			icon: EuropeanGreens,
+			description: t("EuropeanGreens"),
+		},
+		{
+			id: 10,
+			author: "Ann Van den Borne",
+			icon: Casa,
+			description: t("Casa"),
+		},
+		{
+			id: 11,
+			author: "Sadig Alekperov",
+			icon: GreenMood,
+			description: t("GreenMood"),
+		},
+		{
+			id: 12,
+			author: "Malumba & Liliane",
+			icon: Marriage,
+			description: t("Marriage"),
+		},
+		{
+			id: 13,
+			author: "Francesco Cimorelli",
+			icon: BirthdayParty,
+			description: t("BirthdayParty"),
+		},
+		{
+			id: 14,
+			author: "",
+			icon: UseBrussel,
+			description: t("UseBrussel"),
+		},
+		{
+			id: 15,
+			author: "",
+			icon: MCI,
+			description: t("MCI"),
+		},
+		{
+			id: 16,
+			author: "",
+			icon: Hilton,
+			description: t("Hilton"),
+		},
+		{
+			id: 17,
+			author: "",
+			icon: BelgianRailway,
+			description: t("BelgianRailway"),
+		},
+		{
+			id: 18,
+			author: "",
+			icon: Eca,
+			description: t("Eca"),
+		},
+		{
+			id: 1,
+			author: "Johanna Roodt",
+			icon: Earma,
+			description: t("Earma"),
+		},
+		{
+			id: 2,
+			author: "Zoë De Paepe",
+			icon: Una,
+			description: t("Una"),
+		},
+		{
+			id: 3,
+			author: "",
+			icon: Esae,
+			description: t("Esae"),
+		},
+	]
 
 	const toggleExpand = (index: number) => {
 		setExpanded((prev) => ({ ...prev, [index]: !prev[index] }))
@@ -57,14 +188,10 @@ function Testimonials() {
 				<div className="bg-[#ECE0CF] w-36" />
 
 				<div className="ml-7 h-full flex flex-col items- justify-center">
-					<h3 className="font-proximanova3 text-[2rem] mb-3">“What Our Clients Say</h3>
-					<p className="text-sm font-proximanova3">
-						The name says it all: blankspace <br />
-						Like a blank piece of paper, a neutral space where you can determine the color and style
-						yourself. <br />
-						At first glance, the space appears empty. Apart from the bar counter placed in front of
-						the window, which also serves as a welcome desk, and some white frames on the walls and
-						original plant decoration on the ceiling.{" "}
+					<h3 className="font-proximanova3 text-[2rem] mb-3">{t('WhatOutClientsSay')}</h3>
+					<p className="text-sm font-proximanova3 flex flex-col">
+						<span>{t('WhatOutClientsSayText1')}</span>
+						<span>{t('WhatOutClientsSayText2')}</span>
 					</p>
 				</div>
 			</div>
@@ -82,11 +209,10 @@ function Testimonials() {
 									<Button
 										key={index}
 										onClick={() => scrollTo(index)}
-										className={`rounded-full w-8 h-8 text-sm font-proximanova3 flex items-center justify-center text-black hover:bg-transparent font-medium ${
-											index === selectedIndex
-												? "bg-transparent font-proximanova5 text-base "
-												: " bg-transparent "
-										}`}
+										className={`rounded-full w-8 h-8 text-sm font-proximanova3 flex items-center justify-center text-black hover:bg-transparent font-medium ${index === selectedIndex
+											? "bg-transparent font-proximanova5 text-base "
+											: " bg-transparent "
+											}`}
 									>
 										{tml.id}
 									</Button>
@@ -104,15 +230,13 @@ function Testimonials() {
 						{testimonials.map((tml, index) => (
 							<div key={tml.id} className="mx-5 p-4">
 								<Card
-									className={`bg-[#ECE0CF] rounded-none h-[8.5rem] text-sm font-proximanova3 transition-all duration-1000 ${
-										index % 2 === 0 ? "rotate-[2deg]" : "-rotate-[2deg]"
-									} ${expanded[index] ? "h-[28rem]" : "h-[8.5rem]"}`}
+									className={`bg-[#ECE0CF] rounded-none h-[8.5rem] text-sm font-proximanova3 transition-all duration-1000 ${index % 2 === 0 ? "rotate-[2deg]" : "-rotate-[2deg]"
+										} ${expanded[index] ? "h-[28rem]" : "h-[8.5rem]"}`}
 								>
 									<CardContent className="flex flex-col items-center justify-center h-full text-center py-4 z-50 w-full">
 										<div
-											className={`overflow-hidden transition-all duration-1000 ease-in-out mb-1 ${
-												expanded[index] ? "h-full" : "h-[8.5rem]"
-											}`}
+											className={`overflow-hidden transition-all duration-1000 ease-in-out mb-1 ${expanded[index] ? "h-full" : "h-[8.5rem]"
+												}`}
 										>
 											<p>{tml.description}</p>
 										</div>
@@ -125,17 +249,15 @@ function Testimonials() {
 												<span>{expanded[index] ? "Less" : "More"}</span>{" "}
 												<IoIosArrowDown
 													size={20}
-													className={`${
-														expanded[index] && "rotate-180 transition-all duration-1000"
-													}`}
+													className={`${expanded[index] && "rotate-180 transition-all duration-1000"
+														}`}
 												/>
 											</Button>
 											<div>{tml.author}</div>
 										</div>
 										<span
-											className={`absolute bg-white rounded-full w-[3.6rem] h-[3.6rem] p-1 flex shadow-[0_4px_10px_rgba(0,0,0,0.25)] ${
-												index % 2 === 0 ? "-left-[6%]" : "-right-[6%]"
-											}`}
+											className={`absolute bg-white rounded-full w-[3.6rem] h-[3.6rem] p-1 flex shadow-[0_4px_10px_rgba(0,0,0,0.25)] ${index % 2 === 0 ? "-left-[6%]" : "-right-[6%]"
+												}`}
 										>
 											<Image
 												width={0}

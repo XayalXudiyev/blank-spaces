@@ -1,0 +1,34 @@
+{
+  "SendUsYourRequest": "STUUR ONS UW AANVRAAG!",
+  "Phone": "Telefoon",
+  "Email": "E-mail",
+  "EnterEmail": "Voer uw e-mail in",
+  "YourContactDetails": "Uw contactgegevens",
+
+  "FirstName": "*Voornaam",
+  "LastName": "Achternaam",
+  "YourMessage": "Uw bericht",
+  "TypeYourMessageHere": "Typ hier uw bericht...",
+  "Country": "*Land",
+  "Number": "Nummer",
+  "Subject": "*Onderwerp",
+  "EnterSubject": "Voer onderwerp in",
+  "Select": "Selecteren",
+  "ContactUs": "Neem contact met ons op",
+  "CountryPrefixIsRequired": "Landcode is verplicht",
+
+  "LastNameRequired": "Achternaam is verplicht",
+  "FirstNameRequired": "Voornaam is verplicht",
+  "PhoneRequired": "Telefoonnummer is verplicht",
+  "EmailRequired": "E-mail is verplicht",
+  "SubjectRequired": "Onderwerp is verplicht",
+
+
+  "Location": "LOCATIE",
+  "Description": "Het herenhuis ligt in een rustige woonstraat, net achter het Berlaymont, het hoofdkantoor van de Europese Commissie in de EU-wijk van Brussel, waar Europa dagelijks samenkomt.",
+  "Address": "Rue Saint Quentin 29, B-1000 Brussel",
+  "Parking": "Op straat, in de buurt, Interparking Arts-Loi op loopafstand",
+  "PublicTransportation": "Openbaar vervoer",
+  "PublicTransportationText": "Metro (Lijnen 1 & 5) en intercitytreinen op station Brussel-Schuman"
+
+}

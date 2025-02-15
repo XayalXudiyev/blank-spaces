@@ -1,0 +1,35 @@
+{
+    "SendUsYourRequest": "SEND US YOUR REQUEST!",
+    "Phone": "Phone",
+    "Email": "Email",
+    "EnterEmail": "Enter Email",
+    "YourContactDetails": "Your contact details",
+
+    "FirstName": "*First Name",
+    "LastName": "Last Name",
+    "YourMessage": "Your Message",
+    "TypeYourMessageHere": "Type your message here...",
+    "Country": "*Country",
+    "Number" : "Nummber",
+    "Subject": "*Subject",
+    "EnterSubject": "Enter Subject",
+    "Select"  : "Select",
+    "ContactUs" : "Contact Us",
+    "CountryPrefixIsRequired" : "Country Prefix is required",
+    "LastNameRequired": "Last name is required",
+    "FirstNameRequired": "First name is required",
+    "PhoneRequired": "Phone number is required",
+    "EmailRequired": "Email is required",
+    "SubjectRequired": "Subject is required",
+
+
+    "Location": "LOCATION",
+    "Description": "The townhouse is in a quiet residential street, just behind the Berlaymont, the headquarters of the European Commission in the Brussels EU district where Europe meets daily.",
+    "Address": "Rue Saint Quentin 29, B-1000 Brussels",
+    "Parking": "On the street, in the neighborhood, Interparking Arts-Loi within walking distance",
+    "PublicTransportation": "Public transportation :",
+    "PublicTransportationText": "Metro (Line 1 & 5) & Intercity Trains at Bruxelles-Schuman station"
+
+
+  }
+  

@@ -35,7 +35,7 @@ const Companies = () => {
 				}),
 			]}
 		>
-			<CarouselContent className=" select-none">
+			<CarouselContent className=" select-none mt-10">
 				{companyLogos.map((company, index) => (
 					<CarouselItem key={index} className="basis-1/5  flex justify-center items-center ">
 						<Image

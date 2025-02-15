@@ -9,7 +9,8 @@ import {
 	SelectValue,
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
-import React from "react"
+import { useTranslations } from "next-intl"
+import React, { use } from "react"
 import { useForm } from "react-hook-form"
 
 export interface FormData {
@@ -32,10 +33,9 @@ const countries = [
 	{ code: "+81", name: "Japan" },
 ]
 
-const countryList = ["United States", "United Kingdom", "Belgium", "Germany", "India", "Japan"]
-
 const ContactForm = () => {
 	const { register, handleSubmit } = useForm<FormData>()
+	const t = useTranslations("contactUs")
 
 	const onSubmit = (data: FormData) => {
 		console.log(data)
@@ -44,87 +44,83 @@ const ContactForm = () => {
 	return (
 		<div className="flex justify-between px-32 py-14 w-full">
 			<div>
-				<h3 className="font-proximanova3 text-[2rem] mb-3">SEND US YOUR REQUEST!</h3>
+				<h3 className="font-proximanova3 text-[2rem] mb-3">{t("SendUsYourRequest")}</h3>
 				<ul className="flex flex-col space-y-4 pt-4 font-proximanova3">
 					<li>
-						<span className="font-proximanova4">Phone:</span> +32 471 92 22 77
+						<span className="font-proximanova4">{t("Phone")}:</span> +32 471 92 22 77
 					</li>
 					<li>
-						<span className="font-proximanova4">Email:</span> events@blankspace.brussels
+						<span className="font-proximanova4">{t("Email")}:</span> events@blankspace.brussels
 					</li>
 				</ul>
 			</div>
 
 			<div>
 				<form className="p-4" onSubmit={handleSubmit(onSubmit)}>
-					<h2 className="mb-1 text-lg font-semibold">Your contact details</h2>
+					<h2 className="mb-1 text-lg font-semibold"> {t("YourContactDetails")}</h2>
 					<div className="grid grid-cols-2 gap-4">
 						<FormInput
 							id="firstName"
-							label="*First name"
-							placeholder="First name"
-							validation={{ required: "First name is required" }}
+							label={t("FirstName")}
+							placeholder={t("FirstName")}
+							validation={{ required: t("FirstNameRequired") }}
 							register={register}
 						/>
 						<FormInput
 							id="lastName"
-							label="*Last name"
-							placeholder="Last name"
-							validation={{ required: "Last name is required" }}
+							label={t("LastName")}
+							placeholder={t("LastName")}
+							validation={{ required: t("LastNameRequired") }}
 							register={register}
 						/>
 						<FormSelect
 							id="countryPrefix"
-							label="*Country "
+							label={t("Country")}
 							options={countries.map((country) => ({
 								value: country.code,
 								label: `${country.name} (${country.code})`,
 							}))}
-							validation={{ required: "Country prefix is required" }}
+							validation={{ required: t("CountryPrefixIsRequired") }}
 							register={register}
 						/>
 						<FormInput
 							id="number"
-							label="*Number"
+							label={t("Number")}
 							placeholder="+32"
-							validation={{ required: "Phone number is required" }}
+							validation={{ required: t("PhoneRequired") }}
 							register={register}
 						/>
 						<FormInput
 							id="email"
-							label="*Email"
+							label={t("Email")}
 							type="email"
-							placeholder="Enter email"
-							validation={{ required: "Email is required" }}
+							placeholder={t("EnterEmail")}
+							validation={{ required: t("EmailRequired") }}
 							register={register}
 						/>
 
 						<FormInput
 							id="subject"
-							label="*Subject"
-							placeholder="Enter subject"
-							validation={{ required: "Subject is required" }}
+							label={t("Subject")}
+							placeholder={t("EnterSubject")}
+							validation={{ required: t("SubjectRequired") }}
 							register={register}
 						/>
 					</div>
 					<div className="flex flex-col mt-4">
 						<label htmlFor="message" className="text-sm font-medium">
-							Your message
+							{t("YourMessage")}
 						</label>
-						<FormTextarea
-							id="message"
-							placeholder="Type your message here..."
-							register={register}
-						/>
+						<FormTextarea id="message" placeholder={t("TypeYourMessageHere")} register={register} />
 					</div>
 					<div>
 						<div className="flex justify-center relative text-center py-3">
 							<Button
 								size="sm"
-								className="rounded-none bg-black text-white  p-0 px-5"
+								className="rounded-none bg-black hover:bg-black text-white  p-0 px-5"
 								type="submit"
 							>
-								Contact us
+								{t("ContactUs")}
 							</Button>
 						</div>
 					</div>

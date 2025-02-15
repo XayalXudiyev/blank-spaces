@@ -1,0 +1,35 @@
+{
+  "SendUsYourRequest": "ENVOYEZ-NOUS VOTRE DEMANDE !",
+  "Phone": "Téléphone",
+  "Email": "E-mail",
+  "EnterEmail": "Entrez votre e-mail",
+  "YourContactDetails": "Vos coordonnées",
+
+  "FirstName": "*Prénom",
+  "LastName": "Nom",
+  "YourMessage": "Votre message",
+  "TypeYourMessageHere": "Tapez votre message ici...",
+  "Country": "*Pays",
+  "Number": "Numéro",
+  "Subject": "*Sujet",
+  "EnterSubject": "Entrez le sujet",
+  "Select": "Sélectionner",
+  "ContactUs": "Contactez-nous",
+  "CountryPrefixIsRequired": "Le préfixe du pays est requis",
+
+
+  "LastNameRequired": "Le nom de famille est requis",
+  "FirstNameRequired": "Le prénom est requis",
+  "PhoneRequired": "Le numéro de téléphone est requis",
+  "EmailRequired": "L'e-mail est requis",
+  "SubjectRequired": "Le sujet est requis",
+
+
+  "Location": "EMPLACEMENT",
+  "Description": "La maison de ville est située dans une rue résidentielle calme, juste derrière le Berlaymont, le siège de la Commission européenne dans le quartier européen de Bruxelles où l'Europe se rencontre chaque jour.",
+  "Address": "Rue Saint Quentin 29, B-1000 Bruxelles",
+  "Parking": "Dans la rue, dans le quartier, Interparking Arts-Loi à distance de marche",
+  "PublicTransportation": "Transports en commun",
+  "PublicTransportationText": "Métro (Lignes 1 & 5) et trains interurbains à la gare de Bruxelles-Schuman"
+
+}

@@ -1,4 +1,5 @@
-import { Card, CardContent } from "@/components/ui/card"
+"use client"
+
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
 import Image from "next/image"
 
@@ -7,6 +8,7 @@ import FAQ from "@/components/common/FAQ"
 import ContactForm from "@/components/common/SendRequest"
 import Testimonials from "@/components/common/Testimonials"
 import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion"
 import { useTranslations } from "next-intl"
 import img from "../../../../../public/events/corporate-meetings/1.png"
 
@@ -17,7 +19,14 @@ const CorporateMeetings = () => {
 		<div>
 			<div className=" container m-auto  mt-10 mb-16 ">
 				<div className="w-full flex justify-end relative">
-					<div className=" bg-primary absolute left-0 top-14 w-[570px] h-[600px] z-40  py-24 px-14 space-y-5">
+					<motion.div
+						initial={{ x: -300, opacity: 0 }}
+						whileInView={{ x: 0, opacity: 1 }}
+						transition={{ duration: 0.8 }}
+						viewport={{ once: true }}
+						className=" bg-primary absolute left-0 top-14 w-[570px] h-[600px] z-40  py-24 px-14 space-y-5"
+					>
+						{" "}
 						<h2 className="text-3xl font-proximanova3">{t("corporateMeeeting")}</h2>
 						<ul className="font-proximanova3 text-[14px] space-y-5">
 							<li>{t("cm-text1")}</li>
@@ -27,15 +36,21 @@ const CorporateMeetings = () => {
 						<Button className="bg-black rounded-none text-white hover:bg-black flex mx-auto h-8 font-proximanova4 p-4 ">
 							{t("eventButton")}
 						</Button>
-					</div>
-
-					<Carousel className="basis-[55.5%]   ">
-						<CarouselContent>
-							<CarouselItem>
-								<Image src={img} height={0} width={0} alt="Img" className="" />
-							</CarouselItem>
-						</CarouselContent>
-					</Carousel>
+					</motion.div>
+					<motion.div
+						initial={{ x: 300, opacity: 0 }}
+						whileInView={{ x: 0, opacity: 1 }}
+						transition={{ duration: 0.8 }}
+						viewport={{ once: true }}
+					>
+						<Carousel className="basis-[55.5%] w-[650px]">
+							<CarouselContent>
+								<CarouselItem>
+									<Image src={img} height={0} width={0} alt="Img" className="" />
+								</CarouselItem>
+							</CarouselContent>
+						</Carousel>
+					</motion.div>
 				</div>
 			</div>
 			<Companies />

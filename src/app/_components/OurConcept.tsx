@@ -2,6 +2,7 @@
 
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
 
+import { motion } from "framer-motion"
 import Image from "next/image"
 import { FaArrowRightLong } from "react-icons/fa6"
 import You1 from "../../../public/youcanimage/you1.png"
@@ -68,16 +69,39 @@ const OurConcept = () => {
 	return (
 		<div className="">
 			<div className="flex gap-5 items-center my-36 px-16">
-				<video src="/BSP.mp4" autoPlay muted loop playsInline className="w-1/2" />
-				<div className="text-center w-1/2 ">
+				<motion.video
+					initial={{ x: -300, opacity: 0 }}
+					whileInView={{ x: 0, opacity: 1 }}
+					transition={{ duration: 0.8 }}
+					viewport={{ once: true }}
+					src="/BSP.mp4"
+					autoPlay
+					muted
+					loop
+					playsInline
+					className="w-1/2"
+				/>
+				<motion.div
+					initial={{ x: 300, opacity: 0 }}
+					whileInView={{ x: 0, opacity: 1 }}
+					transition={{ duration: 0.8 }}
+					viewport={{ once: true }}
+					className="text-center w-1/2 "
+				>
 					<h3 className="font-proximanova3 text-[2rem] mb-3 ">{t("OurConceptTitle")}</h3>
 					<p className="text-sm font-proximanova3 ">{t("OurConceptText")}</p>
-				</div>
+				</motion.div>
 			</div>
 
 			{/* Services */}
 			<div className="flex gap-5 items-center px-16">
-				<div className="w-1/2">
+				<motion.div
+					className="w-1/2"
+					initial={{ x: -600, opacity: 0 }}
+					whileInView={{ x: 0, opacity: 1 }}
+					transition={{ duration: 0.8 }}
+					viewport={{ once: true }}
+				>
 					<h3 className="font-proximanova3 text-[2rem] mb-3"> {t("HostAnEventTitle")}</h3>
 					<p className="text-sm font-proximanova3 mb-10">{t("HostAnEventText")}</p>
 
@@ -100,8 +124,14 @@ const OurConcept = () => {
 							</span>
 						))}
 					</div>
-				</div>
-				<div className="w-1/2 relative">
+				</motion.div>
+				<motion.div
+					className="w-1/2 relative"
+					initial={{ x: 300, opacity: 0 }}
+					whileInView={{ x: 0, opacity: 1 }}
+					transition={{ duration: 0.8 }}
+					viewport={{ once: true }}
+				>
 					<Carousel>
 						<CarouselContent>
 							{services.map((s) => (
@@ -117,16 +147,28 @@ const OurConcept = () => {
 							BLANKSPACE SCHUMAN
 						</span>
 					</Carousel>
-				</div>
+				</motion.div>
 			</div>
 
 			{/* Spaces */}
 			<div className="bg-[#1C1C1C] flex flex-col text-white mt-24">
-				<h2 className="text-[3.5rem] pt-14 pb-5 font-proximanova5 text-center">
+				<motion.h2
+					initial={{ y: 200 }}
+					whileInView={{ y: 0, opacity: 1 }}
+					transition={{ duration: 0.8 }}
+					viewport={{ once: true }}
+					className="text-[3.5rem] pt-14 pb-5 font-proximanova5 text-center"
+				>
 					{t("HostAnyEventAnywhere")}
-				</h2>
+				</motion.h2>
 				<div className="flex items-center justify-center px-16">
-					<div className="w-1/2 relative">
+					<motion.div
+						initial={{ x: -300 }}
+						whileInView={{ x: 0, opacity: 1 }}
+						transition={{ duration: 0.8 }}
+						viewport={{ once: true }}
+						className="w-1/2 relative"
+					>
 						<Carousel>
 							<CarouselContent>
 								{spaces.map((s) => (
@@ -148,8 +190,14 @@ const OurConcept = () => {
 								{t("Event-Barspace")}
 							</span>
 						</Carousel>
-					</div>
-					<div className="w-1/2 flex flex-col justify-center gap-y-20 items-center pl-3">
+					</motion.div>
+					<motion.div
+						initial={{ x: 300, opacity: 0 }}
+						whileInView={{ x: 0, opacity: 1 }}
+						transition={{ duration: 0.8 }}
+						viewport={{ once: true }}
+						className="w-1/2 flex flex-col justify-center gap-y-20 items-center pl-3"
+					>
 						{spaces.map((sp) => (
 							<div key={sp.id} onMouseEnter={() => setActiveSpace(sp)}>
 								<h3 className="font-proximanova3 text-[2rem] hover:text-[#D2B48C] ">
@@ -159,7 +207,7 @@ const OurConcept = () => {
 								<p className="text-sm font-proximanova3 hover:text-white">{sp.desc}</p>
 							</div>
 						))}
-					</div>
+					</motion.div>
 				</div>
 			</div>
 		</div>

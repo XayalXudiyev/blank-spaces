@@ -1,5 +1,7 @@
 "use client"
 
+import ContactForm from "@/components/common/SendRequest"
+import { Button } from "@/components/ui/button"
 import {
 	Carousel,
 	CarouselContent,
@@ -7,12 +9,10 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from "@/components/ui/carousel"
+import { useTranslations } from "next-intl"
 import Image from "next/image"
 import React, { useState } from "react"
 import IMG from "../../../../public/catering/Picture.png"
-import { useTranslations } from "next-intl"
-import { Button } from "@/components/ui/button"
-import ContactForm from "@/components/common/SendRequest"
 
 interface ExpandedState {
 	[key: number]: boolean
@@ -29,16 +29,12 @@ const CateringAndWorkshops = () => {
 	const truncateText = (text: string, isExpanded: boolean) => {
 		const words = text.split(" ")
 		if (words.length > 20 && !isExpanded) {
-			return words.slice(0, 20).join(" ") + "..."
+			return `${words.slice(0, 20).join(" ")}...`
 		}
 		return text
 	}
 
-	const cateringTexts = [
-		t("obaoText"),
-		t("mazmizText"),
-		t("itraturiText"),
-	]
+	const cateringTexts = [t("obaoText"), t("mazmizText"), t("itraturiText")]
 
 	return (
 		<div className="w-full ">
@@ -60,7 +56,7 @@ const CateringAndWorkshops = () => {
 			</div>
 
 			<div className="w-full flex flex-col justify-center items-center bg-white py-16">
-				<h2 className="text-4xl font-proximanova3 text-center">{t('ourTrustedCaterers')}</h2>
+				<h2 className="text-4xl font-proximanova3 text-center">{t("ourTrustedCaterers")}</h2>
 
 				<div className="w-[100vw] flex justify-center items-center mt-10 px-16 mx-auto select-none">
 					<Carousel className="w-full ">
@@ -76,7 +72,7 @@ const CateringAndWorkshops = () => {
 											onClick={() => toggleExpand(index)}
 											className="p-0  h-0 pl-1 font-proximanova4 text-xs bg-transparent hover:bg-transparent underline"
 										>
-											{expanded[index] ? t('showMore') : t('showLess')}
+											{expanded[index] ? t("showMore") : t("showLess")}
 										</Button>
 									</p>
 								</CarouselItem>
@@ -105,7 +101,9 @@ const CateringAndWorkshops = () => {
 				</div>
 			</div>
 			<div className="w-full flex flex-col justify-center items-center bg-white py-16">
-				<h2 className="text-4xl font-proximanova3 text-center">{t('DiscoverOurWorkshopStories')}</h2>
+				<h2 className="text-4xl font-proximanova3 text-center">
+					{t("DiscoverOurWorkshopStories")}
+				</h2>
 
 				<div className="w-[100vw] flex justify-center items-center mt-10 px-16 mx-auto select-none">
 					<Carousel className="w-full ">
@@ -121,7 +119,7 @@ const CateringAndWorkshops = () => {
 											onClick={() => toggleExpand(index)}
 											className="p-0  h-0 pl-1 font-proximanova4 text-xs bg-transparent hover:bg-transparent underline"
 										>
-											{expanded[index] ? t('showMore') : t('showLess')}
+											{expanded[index] ? t("showMore") : t("showLess")}
 										</Button>
 									</p>
 								</CarouselItem>
@@ -133,7 +131,6 @@ const CateringAndWorkshops = () => {
 				</div>
 			</div>
 			<ContactForm />
-
 		</div>
 	)
 }

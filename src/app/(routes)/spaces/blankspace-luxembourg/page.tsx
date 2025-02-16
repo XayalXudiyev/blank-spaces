@@ -1,3 +1,4 @@
+import ContactForm from "@/components/common/SendRequest"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import {
@@ -7,6 +8,7 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from "@/components/ui/carousel"
+import { useTranslations } from "next-intl"
 import Image from "next/image"
 import React from "react"
 import Component1 from "../../../../../public/spaces/carousel/Component10.png"
@@ -14,8 +16,6 @@ import Component2 from "../../../../../public/spaces/carousel/Component11.png"
 import Component3 from "../../../../../public/spaces/carousel/Component12.png"
 import Icons from "../../../../../public/spaces/icons.svg"
 import IMG from "../../../../../public/spaces/luxeburg.svg"
-import { useTranslations } from "next-intl"
-import ContactForm from "@/components/common/SendRequest"
 
 const CarouselItems = [
 	{ image: Component1, title: "Component1" },
@@ -24,7 +24,6 @@ const CarouselItems = [
 ]
 
 const BlankspaceLuxembourg = () => {
-
 	const t = useTranslations("spaces")
 
 	return (
@@ -41,9 +40,7 @@ const BlankspaceLuxembourg = () => {
 						</h2>
 						<div className="absolute right-0 tracking-wide top-72  w-1/2  font-proximanova3">
 							<h4 className=" text-[1.9rem]  mb-4">{t("flexibleSpace")}</h4>
-							<p className="text-sm w-[92%] leading-5">
-								{t("flexibleSpaceText")}
-							</p>
+							<p className="text-sm w-[92%] leading-5">{t("flexibleSpaceText")}</p>
 							<Button
 								size={"sm"}
 								className=" font-proximanova4 mt-6  bg-transparent hover:bg-transparent border border-white rounded-none "
@@ -57,9 +54,7 @@ const BlankspaceLuxembourg = () => {
 			<div className="bg-[#1C1C1C] text-white">
 				<div className="tracking-wide  w-1/2 font-proximanova3 py-16 pl-16">
 					<h4 className=" text-[1.9rem] pr-5  mb-4">{t("equipped")}</h4>
-					<p className="text-sm  leading-5">
-						{t("equippedText")}
-					</p>
+					<p className="text-sm  leading-5">{t("equippedText")}</p>
 				</div>
 			</div>
 
@@ -70,9 +65,7 @@ const BlankspaceLuxembourg = () => {
 						<Carousel className="w-full">
 							<CarouselContent className="font-proximanova3 text-sm">
 								<CarouselItem className="px-7">
-									<p>
-										{t("whyChooseUsText1")}
-									</p>
+									<p>{t("whyChooseUsText1")}</p>
 								</CarouselItem>
 								{/* <CarouselItem className="p-0">
 									<p>
@@ -80,9 +73,7 @@ const BlankspaceLuxembourg = () => {
 									</p>
 								</CarouselItem> */}
 								<CarouselItem className="p-0">
-									<p>
-										{t("whyChooseUsText3")}
-									</p>
+									<p>{t("whyChooseUsText3")}</p>
 								</CarouselItem>
 							</CarouselContent>
 							<div className="absolute right-1/2 -bottom-6 transform ">

@@ -14,7 +14,6 @@ import Image from "next/image"
 import { useForm } from "react-hook-form"
 import IMG from "../../../../public/Contact/contactpage.png"
 
-
 export interface FormData {
 	firstName: string
 	lastName: string
@@ -51,7 +50,10 @@ const ContactPage = () => {
 
 			<div className="w-1/2 h-full">
 				<form onSubmit={handleSubmit(onSubmit)} className="py-5">
-					<h2 className=" text-[2rem] mb-10 font-proximanova3 text-center"> {t("SendUsYourRequest")}</h2>
+					<h2 className=" text-[2rem] mb-10 font-proximanova3 text-center">
+						{" "}
+						{t("SendUsYourRequest")}
+					</h2>
 					<div className="grid grid-cols-2 gap-8">
 						<FormInput
 							id="firstName"

@@ -68,7 +68,6 @@ const OurConcept = () => {
 	return (
 		<div className="">
 			<div className="flex gap-5 items-center my-36 px-16">
-
 				<video src="/BSP.mp4" autoPlay muted loop playsInline className="w-1/2" />
 				<div className="text-center w-1/2 ">
 					<h3 className="font-proximanova3 text-[2rem] mb-3 ">{t("OurConceptTitle")}</h3>
@@ -111,11 +110,13 @@ const OurConcept = () => {
 								</CarouselItem>
 							))}
 						</CarouselContent>
-						<span className="text-sm absolute top-16 -right-[5.3rem]  font-proximanova4 rotate-90">{t("Event-Barspace")}</span>
-						<span className="text-[7px] absolute bottom-9 -right-14  font-proximanova3 rotate-90">BLANKSPACE SCHUMAN</span>
+						<span className="text-sm absolute top-16 -right-[5.3rem]  font-proximanova4 rotate-90">
+							{t("Event-Barspace")}
+						</span>
+						<span className="text-[7px] absolute bottom-9 -right-14  font-proximanova3 rotate-90">
+							BLANKSPACE SCHUMAN
+						</span>
 					</Carousel>
-
-
 				</div>
 			</div>
 
@@ -140,9 +141,12 @@ const OurConcept = () => {
 									</CarouselItem>
 								))}
 							</CarouselContent>
-							<span className="text-[7px] absolute top-12 -left-10  font-proximanova3 -rotate-90">BLANKSPACE SCHUMAN</span>
-							<span className="text-sm absolute bottom-[7.5rem] -left-[4.8rem]  font-proximanova4 -rotate-90">{t("Event-Barspace")}</span>
-
+							<span className="text-[7px] absolute top-12 -left-10  font-proximanova3 -rotate-90">
+								BLANKSPACE SCHUMAN
+							</span>
+							<span className="text-sm absolute bottom-[7.5rem] -left-[4.8rem]  font-proximanova4 -rotate-90">
+								{t("Event-Barspace")}
+							</span>
 						</Carousel>
 					</div>
 					<div className="w-1/2 flex flex-col justify-center gap-y-20 items-center pl-3">

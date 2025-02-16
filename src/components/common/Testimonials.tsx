@@ -188,10 +188,10 @@ function Testimonials() {
 				<div className="bg-[#ECE0CF] w-36" />
 
 				<div className="ml-7 h-full flex flex-col items- justify-center">
-					<h3 className="font-proximanova3 text-[2rem] mb-3">{t('WhatOutClientsSay')}</h3>
+					<h3 className="font-proximanova3 text-[2rem] mb-3">{t("WhatOutClientsSay")}</h3>
 					<p className="text-sm font-proximanova3 flex flex-col">
-						<span>{t('WhatOutClientsSayText1')}</span>
-						<span>{t('WhatOutClientsSayText2')}</span>
+						<span>{t("WhatOutClientsSayText1")}</span>
+						<span>{t("WhatOutClientsSayText2")}</span>
 					</p>
 				</div>
 			</div>
@@ -209,10 +209,11 @@ function Testimonials() {
 									<Button
 										key={index}
 										onClick={() => scrollTo(index)}
-										className={`rounded-full w-8 h-8 text-sm font-proximanova3 flex items-center justify-center text-black hover:bg-transparent font-medium ${index === selectedIndex
-											? "bg-transparent font-proximanova5 text-base "
-											: " bg-transparent "
-											}`}
+										className={`rounded-full w-8 h-8 text-sm font-proximanova3 flex items-center justify-center text-black hover:bg-transparent font-medium ${
+											index === selectedIndex
+												? "bg-transparent font-proximanova5 text-base "
+												: " bg-transparent "
+										}`}
 									>
 										{tml.id}
 									</Button>
@@ -230,13 +231,15 @@ function Testimonials() {
 						{testimonials.map((tml, index) => (
 							<div key={tml.id} className="mx-5 p-4">
 								<Card
-									className={`bg-[#ECE0CF] rounded-none h-[8.5rem] text-sm font-proximanova3 transition-all duration-1000 ${index % 2 === 0 ? "rotate-[2deg]" : "-rotate-[2deg]"
-										} ${expanded[index] ? "h-[28rem]" : "h-[8.5rem]"}`}
+									className={`bg-[#ECE0CF] rounded-none h-[8.5rem] text-sm font-proximanova3 transition-all duration-1000 ${
+										index % 2 === 0 ? "rotate-[2deg]" : "-rotate-[2deg]"
+									} ${expanded[index] ? "h-[28rem]" : "h-[8.5rem]"}`}
 								>
 									<CardContent className="flex flex-col items-center justify-center h-full text-center py-4 z-50 w-full">
 										<div
-											className={`overflow-hidden transition-all duration-1000 ease-in-out mb-1 ${expanded[index] ? "h-full" : "h-[8.5rem]"
-												}`}
+											className={`overflow-hidden transition-all duration-1000 ease-in-out mb-1 ${
+												expanded[index] ? "h-full" : "h-[8.5rem]"
+											}`}
 										>
 											<p>{tml.description}</p>
 										</div>
@@ -249,15 +252,17 @@ function Testimonials() {
 												<span>{expanded[index] ? "Less" : "More"}</span>{" "}
 												<IoIosArrowDown
 													size={20}
-													className={`${expanded[index] && "rotate-180 transition-all duration-1000"
-														}`}
+													className={`${
+														expanded[index] && "rotate-180 transition-all duration-1000"
+													}`}
 												/>
 											</Button>
 											<div>{tml.author}</div>
 										</div>
 										<span
-											className={`absolute bg-white rounded-full w-[3.6rem] h-[3.6rem] p-1 flex shadow-[0_4px_10px_rgba(0,0,0,0.25)] ${index % 2 === 0 ? "-left-[6%]" : "-right-[6%]"
-												}`}
+											className={`absolute bg-white rounded-full w-[3.6rem] h-[3.6rem] p-1 flex shadow-[0_4px_10px_rgba(0,0,0,0.25)] ${
+												index % 2 === 0 ? "-left-[6%]" : "-right-[6%]"
+											}`}
 										>
 											<Image
 												width={0}

@@ -8,11 +8,11 @@ import {
 	NavigationMenuList,
 	NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
+import { useTranslations } from "next-intl"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import LocaleSwitcher from "../localSwitcher/LocaleSwithcher"
-import { useTranslations } from "next-intl"
 import { Button } from "../ui/button"
 
 interface NavItem {
@@ -46,8 +46,7 @@ const Navbar = () => {
 			],
 		},
 		{ name: t("cateringAndWorkshops"), href: "/catering-and-workshops" },
-	];
-
+	]
 
 	return (
 		<nav className="fixed w-full flex items-center justify-center font-proximanova4 text-white bg-[#1C1C1C] z-50 ">
@@ -65,8 +64,9 @@ const Navbar = () => {
 									{item.submenu ? (
 										<>
 											<NavigationMenuTrigger
-												className={`font-proximanova5  ${isParentActive ? "text-[#D2B48C]" : "data-[state=open]:text-[#D2B48C]"
-													}`}
+												className={`font-proximanova5  ${
+													isParentActive ? "text-[#D2B48C]" : "data-[state=open]:text-[#D2B48C]"
+												}`}
 											>
 												{item.name}
 											</NavigationMenuTrigger>
@@ -81,10 +81,11 @@ const Navbar = () => {
 																	<NavigationMenuLink asChild>
 																		<Link
 																			href={subItem.href}
-																			className={`block py-1 text-sm font-proximanova3 ${isSubActive
-																				? "text-[#D2B48C]"
-																				: "hover:bg-[#ECE0CF] focus:bg-[#E4D1B9]"
-																				}`}
+																			className={`block py-1 text-sm font-proximanova3 ${
+																				isSubActive
+																					? "text-[#D2B48C]"
+																					: "hover:bg-[#ECE0CF] focus:bg-[#E4D1B9]"
+																			}`}
 																		>
 																			{subItem.name}
 																		</Link>
@@ -101,8 +102,9 @@ const Navbar = () => {
 											<NavigationMenuLink asChild>
 												<Link
 													href={item.href}
-													className={`rounded-md text-sm ${isActive ? "text-[#D2B48C]" : "hover:text-[#D2B48C]"
-														}`}
+													className={`rounded-md text-sm ${
+														isActive ? "text-[#D2B48C]" : "hover:text-[#D2B48C]"
+													}`}
 												>
 													{item.name}
 												</Link>
@@ -124,11 +126,11 @@ const Navbar = () => {
 
 			<div className="absolute right-0 pr-16 flex h-full items-center">
 				<LocaleSwitcher />
-				<Button size={"sm"} className={`first:bg-transparent hover:bg-transparent border rounded-none border-white ml-4 ${pathname === "/contact" ? "text-[#D2B48C] border-[#D2B48C] bg-transparent " : "hover:text-white bg-transparent"}`}>
-					<Link
-						href="/contact"
-						className={"text-sm px-1 "}
-					>
+				<Button
+					size={"sm"}
+					className={`first:bg-transparent hover:bg-transparent border rounded-none border-white ml-4 ${pathname === "/contact" ? "text-[#D2B48C] border-[#D2B48C] bg-transparent " : "hover:text-white bg-transparent"}`}
+				>
+					<Link href="/contact" className={"text-sm px-1 "}>
 						Contact us
 					</Link>
 				</Button>

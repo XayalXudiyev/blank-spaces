@@ -119,7 +119,7 @@ const OurConcept = () => {
 							>
 								{srv.service}
 								<FaArrowRightLong
-									className={`ml-2 transition-opacity duration-300 ${activeService.id === srv.id ? "opacity-100" : "opacity-0"}`}
+									className={`ml-2 transition-opacity duration-4000 ${activeService.id === srv.id ? "opacity-100" : "opacity-0"}`}
 								/>
 							</span>
 						))}
@@ -140,7 +140,7 @@ const OurConcept = () => {
 								</CarouselItem>
 							))}
 						</CarouselContent>
-						<span className="text-sm absolute top-16 -right-[5.3rem]  font-proximanova4 rotate-90">
+						<span className="text-sm absolute top-12 -right-[4.3rem]  font-proximanova4 rotate-90">
 							{t("Event-Barspace")}
 						</span>
 						<span className="text-[7px] absolute bottom-9 -right-14  font-proximanova3 rotate-90">
@@ -186,7 +186,7 @@ const OurConcept = () => {
 							<span className="text-[7px] absolute top-12 -left-10  font-proximanova3 -rotate-90">
 								BLANKSPACE SCHUMAN
 							</span>
-							<span className="text-sm absolute bottom-[7.5rem] -left-[4.8rem]  font-proximanova4 -rotate-90">
+							<span className="text-sm absolute bottom-[6.7rem] -left-[4.31em]  font-proximanova4 -rotate-90">
 								{t("Event-Barspace")}
 							</span>
 						</Carousel>
@@ -199,13 +199,16 @@ const OurConcept = () => {
 						className="w-1/2 flex flex-col justify-center gap-y-20 items-center pl-3"
 					>
 						{spaces.map((sp) => (
-							<div key={sp.id} onMouseEnter={() => setActiveSpace(sp)}>
-								<h3 className="font-proximanova3 text-[2rem] hover:text-[#D2B48C] ">
-									<Link href={sp.link}>{sp.name}</Link>
-								</h3>
-								<Separator className="my-3" />
+							<div key={sp.id} onMouseEnter={() => setActiveSpace(sp)} >
+								<div className="group hover:cursor-pointer">
+									<h3 className="font-proximanova3 text-[2rem] group-hover:text-[#D2B48C] ">
+										<Link href={sp.link}>{sp.name}</Link>
+									</h3>
+									<Separator className="mb-3 mt-1 bg-gray-300 group-hover:bg-[#D2B48C]" />
+								</div>
 								<p className="text-sm font-proximanova3 hover:text-white">{sp.desc}</p>
 							</div>
+
 						))}
 					</motion.div>
 				</div>

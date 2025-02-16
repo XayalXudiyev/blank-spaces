@@ -9,6 +9,7 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from "@/components/ui/carousel"
+import { motion } from "framer-motion"
 import { useTranslations } from "next-intl"
 import Image from "next/image"
 import React from "react"
@@ -17,8 +18,6 @@ import Component2 from "../../../../../public/spaces/carousel/Component11.png"
 import Component3 from "../../../../../public/spaces/carousel/Component12.png"
 import Icons from "../../../../../public/spaces/icons.svg"
 import IMG from "../../../../../public/spaces/luxeburg.svg"
-import { motion } from "framer-motion"
-
 
 const CarouselItems = [
 	{ image: Component1, title: "Component1" },
@@ -74,9 +73,7 @@ const BlankspaceLuxembourg = () => {
 					viewport={{ once: true }}
 					className="tracking-wide  w-1/2 font-proximanova3 py-16 pl-16"
 				>
-					<h4 className=" text-[1.9rem] pr-5  mb-4">
-						{t("equipped")}
-					</h4>
+					<h4 className=" text-[1.9rem] pr-5  mb-4">{t("equipped")}</h4>
 					<p className="text-sm  leading-5">{t("equippedText")}</p>
 				</motion.div>
 			</div>
@@ -88,7 +85,8 @@ const BlankspaceLuxembourg = () => {
 						whileInView={{ x: 0, opacity: 1 }}
 						transition={{ duration: 0.8 }}
 						viewport={{ once: true }}
-						className="ml-7 h-full flex flex-col justify-center w-[60%] bg-primary text-center px-[4rem] py-16 z-30 mr-[-40]">
+						className="ml-7 h-full flex flex-col justify-center w-[60%] bg-primary text-center px-[4rem] py-16 z-30 mr-[-40]"
+					>
 						<h3 className="font-proximanova3 text-[2rem] mb-3">{t("whyChooseUs")}</h3>
 						<Carousel className="w-full">
 							<CarouselContent className="font-proximanova3 text-sm">
@@ -117,7 +115,9 @@ const BlankspaceLuxembourg = () => {
 						transition={{ duration: 0.8 }}
 						viewport={{ once: true }}
 						className="w-1/2 flex flex-col items-center relative"
-					>						<Carousel className="w-full">
+					>
+						{" "}
+						<Carousel className="w-full">
 							<CarouselContent>
 								{CarouselItems.map((item, index) => (
 									<CarouselItem key={index} className="p-0">

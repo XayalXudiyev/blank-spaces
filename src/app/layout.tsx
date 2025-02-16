@@ -4,7 +4,6 @@ import { getLocale, getMessages } from "next-intl/server"
 import localFont from "next/font/local"
 
 import "./globals.css"
-import ContactForm from "@/components/common/SendRequest"
 import Footer from "@/components/footer"
 import Navbar from "@/components/header/Navbar"
 

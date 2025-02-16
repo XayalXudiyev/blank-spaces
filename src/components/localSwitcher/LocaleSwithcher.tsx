@@ -42,7 +42,6 @@ export default function LocaleSwitcher() {
 		nl: "NL",
 	}
 
-	// SSR sırasında bir şey göstermemesi için kontrol ekle
 	if (localeActive === null) return null
 
 	return (

@@ -9,11 +9,11 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from "@/components/ui/carousel"
+import { motion } from "framer-motion"
 import { useTranslations } from "next-intl"
 import Image from "next/image"
 import React, { useState } from "react"
 import IMG from "../../../../public/catering/Picture.png"
-import { motion } from "framer-motion"
 
 interface ExpandedState {
 	[key: number]: boolean
@@ -46,7 +46,8 @@ const CateringAndWorkshops = () => {
 						whileInView={{ x: 0, opacity: 1 }}
 						transition={{ duration: 0.8 }}
 						viewport={{ once: true }}
-						className="w-full flex flex-col justify-center space-y-2 bg-white px-16">
+						className="w-full flex flex-col justify-center space-y-2 bg-white px-16"
+					>
 						<p className="text-base font-proximanova4">{t("culinaryPerfection")}</p>
 						<p className="text-3xl pb-4 font-proximanova3">{t("blankCatering")}</p>
 						<div className="flex flex-col space-y-5 text-sm font-proximanova3">
@@ -72,8 +73,8 @@ const CateringAndWorkshops = () => {
 				whileInView={{ y: 0, opacity: 1 }}
 				transition={{ duration: 0.8 }}
 				viewport={{ once: true }}
-
-				className="w-full flex flex-col justify-center items-center bg-white py-16">
+				className="w-full flex flex-col justify-center items-center bg-white py-16"
+			>
 				<h2 className="text-4xl font-proximanova3 text-center">{t("ourTrustedCaterers")}</h2>
 
 				<div className="w-[100vw] flex justify-center items-center mt-10 px-16 mx-auto select-none">
@@ -104,12 +105,12 @@ const CateringAndWorkshops = () => {
 			<div className="flex py-16 pl-40 bg-primary">
 				<div className="flex">
 					<motion.div
-
 						initial={{ x: -300, opacity: 0 }}
 						whileInView={{ x: 0, opacity: 1 }}
 						transition={{ duration: 0.8 }}
 						viewport={{ once: true }}
-						className="h-auto w-9/12">
+						className="h-auto w-9/12"
+					>
 						<Image src={IMG} alt="Catering" width={10000} height={1000} />
 					</motion.div>
 					<motion.div
@@ -117,7 +118,8 @@ const CateringAndWorkshops = () => {
 						whileInView={{ x: 0, opacity: 1 }}
 						transition={{ duration: 0.8 }}
 						viewport={{ once: true }}
-						className="w-full flex flex-col justify-center space-y-2 bg-white px-16">
+						className="w-full flex flex-col justify-center space-y-2 bg-white px-16"
+					>
 						<p className="text-lg font-proximanova4">{t("dinamicExperiences")}</p>
 						<p className="text-[33px] pb-4 font-proximanova3">{t("ourWorkshops")}</p>
 						<div className="flex flex-col space-y-5 text-sm font-proximanova3">
@@ -134,7 +136,8 @@ const CateringAndWorkshops = () => {
 				whileInView={{ y: 0, opacity: 1 }}
 				transition={{ duration: 0.8 }}
 				viewport={{ once: true }}
-				className="w-full flex flex-col justify-center items-center bg-white py-16">
+				className="w-full flex flex-col justify-center items-center bg-white py-16"
+			>
 				<h2 className="text-4xl font-proximanova3 text-center">
 					{t("DiscoverOurWorkshopStories")}
 				</h2>

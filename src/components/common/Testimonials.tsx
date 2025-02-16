@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import useEmblaCarousel from "embla-carousel-react"
 import { useTranslations } from "next-intl"
 import Image from "next/image"
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import { FaArrowDown, FaArrowUp } from "react-icons/fa6"
 import { IoIosArrowDown } from "react-icons/io"
 import MCI from "../../../public/companies/MCI.svg"
@@ -38,6 +38,8 @@ function Testimonials() {
 	const [carouselRef, carouselApi] = useEmblaCarousel({ axis: "y", loop: true })
 	const [selectedIndex, setSelectedIndex] = useState(10)
 	const [expanded, setExpanded] = useState<ExpandedState>({})
+	const [isOverflowing, setIsOverflowing] = useState<{ [key: number]: boolean }>({})
+	const textRefs = useRef<(HTMLParagraphElement | null)[]>([])
 
 	const testimonials = [
 		{
@@ -150,6 +152,19 @@ function Testimonials() {
 		},
 	]
 
+	useEffect(() => {
+		const checkOverflow = () => {
+			const newOverflowState: { [key: number]: boolean } = {}
+			textRefs.current.forEach((el, index) => {
+				if (el) {
+					newOverflowState[index] = el.scrollHeight > el.clientHeight
+				}
+			})
+			setIsOverflowing(newOverflowState)
+		}
+		checkOverflow()
+	}, [])
+
 	const toggleExpand = (index: number) => {
 		setExpanded((prev) => ({ ...prev, [index]: !prev[index] }))
 	}
@@ -209,11 +224,10 @@ function Testimonials() {
 									<Button
 										key={index}
 										onClick={() => scrollTo(index)}
-										className={`rounded-full w-8 h-8 text-sm font-proximanova3 flex items-center justify-center text-black hover:bg-transparent font-medium ${
-											index === selectedIndex
-												? "bg-transparent font-proximanova5 text-base "
-												: " bg-transparent "
-										}`}
+										className={`rounded-full w-8 h-8 text-sm font-proximanova3 flex items-center justify-center text-black hover:bg-transparent font-medium ${index === selectedIndex
+											? "bg-transparent font-proximanova5 text-base "
+											: " bg-transparent "
+											}`}
 									>
 										{tml.id}
 									</Button>
@@ -230,39 +244,34 @@ function Testimonials() {
 					<div className="flex flex-col h-[500px]">
 						{testimonials.map((tml, index) => (
 							<div key={tml.id} className="mx-5 p-4">
-								<Card
-									className={`bg-[#ECE0CF] rounded-none h-[8.5rem] text-sm font-proximanova3 transition-all duration-1000 ${
-										index % 2 === 0 ? "rotate-[2deg]" : "-rotate-[2deg]"
-									} ${expanded[index] ? "h-[28rem]" : "h-[8.5rem]"}`}
+								<Card className={`bg-[#ECE0CF] rounded-none  text-sm font-proximanova3 transition-all duration-1000 ${index % 2 === 0 ? "rotate-[2deg]" : "-rotate-[2deg]"
+									} "}`}
 								>
-									<CardContent className="flex flex-col items-center justify-center h-full text-center py-4 z-50 w-full">
+									<CardContent className="flex flex-col items-center transition-all duration-1000 justify-center min-h-[7.8rem] text-center py-4 w-full">
 										<div
-											className={`overflow-hidden transition-all duration-1000 ease-in-out mb-1 ${
-												expanded[index] ? "h-full" : "h-[8.5rem]"
-											}`}
+											className={`overflow-hidden transition-all duration-1000 ease-in-out ${expanded[index] ? "h-full" : "line-clamp-3"}`}
 										>
-											<p>{tml.description}</p>
+											<p ref={(el) => (textRefs.current[index] = el)}>{tml.description}</p>
 										</div>
 
-										<div className="flex w-1/2 ml-auto justify-between">
+										<div className="flex w-1/2 ml-auto justify-between transition-all duration-1000">
 											<Button
-												className="p-0 h-fit bg-transparent hover:bg-transparent text-black text-xs font-proximanova4"
+												className="p-0 h-fit bg-transparent hover:bg-transparent text-black transition-all duration-1000 text-xs font-proximanova4"
 												onClick={() => toggleExpand(index)}
+												disabled={!isOverflowing[index]}
 											>
-												<span>{expanded[index] ? "Less" : "More"}</span>{" "}
+												<span>{expanded[index] ? "Less" : "More"}</span>
 												<IoIosArrowDown
 													size={20}
-													className={`${
-														expanded[index] && "rotate-180 transition-all duration-1000"
-													}`}
+													className={`${expanded[index] && "rotate-180 transition-all duration-1000"}`}
 												/>
 											</Button>
-											<div>{tml.author}</div>
+											<div className={`absolute text-xs transition-all duration-1000 font-proximanova3 mt-1)] ${index % 2 === 0 ? "left-[6%]" : "right-[6%]"
+												}`}>{tml.author}</div>
 										</div>
 										<span
-											className={`absolute bg-white rounded-full w-[3.6rem] h-[3.6rem] p-1 flex shadow-[0_4px_10px_rgba(0,0,0,0.25)] ${
-												index % 2 === 0 ? "-left-[6%]" : "-right-[6%]"
-											}`}
+											className={`absolute bg-white rounded-full w-[3.6rem] h-[3.6rem] p-1 flex shadow-[0_4px_10px_rgba(0,0,0,0.25)] ${index % 2 === 0 ? "-left-[6%]" : "-right-[6%]"
+												}`}
 										>
 											<Image
 												width={0}

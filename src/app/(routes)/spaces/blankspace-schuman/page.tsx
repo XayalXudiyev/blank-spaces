@@ -2,11 +2,7 @@
 
 import ContactForm from "@/components/common/SendRequest"
 import { Button } from "@/components/ui/button"
-import {
-	Carousel,
-	CarouselContent,
-	CarouselItem,
-} from "@/components/ui/carousel"
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
 import { motion } from "framer-motion"
 import { useTranslations } from "next-intl"
 import Image from "next/image"
@@ -77,7 +73,6 @@ const BlankspaceSchuman = () => {
 			</div>
 
 			<div className="flex flex-col">
-
 				<div className="flex pl-8 pr-14 mx-auto py-24 justify-center items-center select-none w-full">
 					<motion.div
 						initial={{ x: -300, opacity: 0 }}
@@ -123,14 +118,14 @@ const BlankspaceSchuman = () => {
 					</motion.div>
 				</div>
 
-
 				<div className="flex px-16 mx-auto py-16 justify-center items-center select-none">
 					<motion.div
 						initial={{ x: -300, opacity: 0 }}
 						whileInView={{ x: 0, opacity: 1 }}
 						transition={{ duration: 0.8 }}
 						viewport={{ once: true }}
-						className="w-1/2 flex flex-col items-center relative">
+						className="w-1/2 flex flex-col items-center relative"
+					>
 						<Carousel className="w-full">
 							<CarouselContent>
 								{CarouselItems.map((item, index) => (
@@ -159,7 +154,8 @@ const BlankspaceSchuman = () => {
 						whileInView={{ x: 0, opacity: 1 }}
 						transition={{ duration: 0.8 }}
 						viewport={{ once: true }}
-						className="ml-7 h-full flex flex-col justify-center w-1/2 text-center pl-16 py-7 z-30 ">
+						className="ml-7 h-full flex flex-col justify-center w-1/2 text-center pl-16 py-7 z-30 "
+					>
 						<h3 className="font-proximanova3 text-[2rem] mb-3">{t("gardenSpace")}</h3>
 						<p className="text-sm font-proximanova3">{t("gardenSpaceText1")}</p>
 						<p className="text-sm font-proximanova3">{t("gardenSpaceText2")}</p>
@@ -167,14 +163,14 @@ const BlankspaceSchuman = () => {
 					</motion.div>
 				</div>
 
-
 				<div className="flex pl-8 pr-14 mx-auto py-24 justify-center items-center select-none w-full">
 					<motion.div
 						initial={{ x: -300, opacity: 0 }}
 						whileInView={{ x: 0, opacity: 1 }}
 						transition={{ duration: 0.8 }}
 						viewport={{ once: true }}
-						className="ml-7 h-full flex flex-col justify-center w-[60%] bg-primary text-center px-[4rem] py-7 z-30 mr-[-40]">
+						className="ml-7 h-full flex flex-col justify-center w-[60%] bg-primary text-center px-[4rem] py-7 z-30 mr-[-40]"
+					>
 						<h3 className="font-proximanova3 text-[2rem] mb-3">{t("tableSpace")}</h3>
 						<p className="text-sm font-proximanova3">{t("tableSpaceText1")}</p>
 						<p className="text-sm font-proximanova3">{t("tableSpaceText2")}</p>
@@ -185,7 +181,8 @@ const BlankspaceSchuman = () => {
 						whileInView={{ x: 0, opacity: 1 }}
 						transition={{ duration: 0.8 }}
 						viewport={{ once: true }}
-						className="w-1/2 flex flex-col items-center relative">
+						className="w-1/2 flex flex-col items-center relative"
+					>
 						<Carousel className="w-full">
 							<CarouselContent>
 								{CarouselItems.map((item, index) => (
@@ -211,14 +208,14 @@ const BlankspaceSchuman = () => {
 					</motion.div>
 				</div>
 
-
 				<div className="flex px-16 mx-auto py-16 justify-center items-center select-none">
 					<motion.div
 						initial={{ x: -300, opacity: 0 }}
 						whileInView={{ x: 0, opacity: 1 }}
 						transition={{ duration: 0.8 }}
 						viewport={{ once: true }}
-						className="w-1/2 flex flex-col items-center relative">
+						className="w-1/2 flex flex-col items-center relative"
+					>
 						<Carousel className="w-full">
 							<CarouselContent>
 								{CarouselItems.map((item, index) => (
@@ -247,7 +244,8 @@ const BlankspaceSchuman = () => {
 						whileInView={{ x: 0, opacity: 1 }}
 						transition={{ duration: 0.8 }}
 						viewport={{ once: true }}
-						className="ml-7 h-full flex flex-col justify-center w-1/2 text-center pl-16 py-7 z-30 ">
+						className="ml-7 h-full flex flex-col justify-center w-1/2 text-center pl-16 py-7 z-30 "
+					>
 						<h3 className="font-proximanova3 text-[2rem] mb-3">{t("studioSpace")}</h3>
 						<p className="text-sm font-proximanova3">{t("studioSpaceText1")}</p>
 						<p className="text-sm font-proximanova3">{t("studioSpaceText2")}</p>

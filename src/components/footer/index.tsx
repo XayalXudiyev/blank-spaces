@@ -1,9 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
 import React from "react"
+import { CiLinkedin } from "react-icons/ci"
 import { FaInstagram } from "react-icons/fa"
-import { CiLinkedin } from "react-icons/ci";
-
 
 const Footer = () => {
 	return (

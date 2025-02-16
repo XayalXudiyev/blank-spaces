@@ -84,7 +84,7 @@ const Navbar = () => {
 																			className={`block py-1 text-sm font-proximanova3 ${
 																				isSubActive
 																					? "text-[#D2B48C]"
-																					: "hover:bg-[#ECE0CF] focus:bg-[#E4D1B9]"
+																					: "hover:bg-[#ECE0CF] px-2 focus:bg-[#E4D1B9]"
 																			}`}
 																		>
 																			{subItem.name}

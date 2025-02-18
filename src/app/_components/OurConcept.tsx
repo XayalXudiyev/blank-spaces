@@ -2,7 +2,7 @@
 
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
 
-import { motion } from "framer-motion"
+import { motion, useInView } from "framer-motion"
 import Image from "next/image"
 import { FaArrowRightLong } from "react-icons/fa6"
 import You1 from "../../../public/youcanimage/you1.png"
@@ -18,7 +18,7 @@ import Spaces2 from "../../../public/spaces/host-anywhere2.png"
 
 import { Separator } from "@/components/ui/separator"
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import { useTranslations } from "next-intl"
 
@@ -66,14 +66,30 @@ const OurConcept = () => {
 		return () => clearInterval(interval)
 	}, [autoPlayEnabled])
 
+	const ref1 = useRef(null)
+	const ref2 = useRef(null)
+	const ref3 = useRef(null)
+	const ref4 = useRef(null)
+	const ref5 = useRef(null)
+	const ref6 = useRef(null)
+	const ref7 = useRef(null)
+
+	const inView1 = useInView(ref1)
+	const inView2 = useInView(ref2)
+	const inView3 = useInView(ref3)
+	const inView4 = useInView(ref4)
+	const inView5 = useInView(ref5)
+	const inView6 = useInView(ref6)
+	const inView7 = useInView(ref7)
 	return (
 		<div className="">
 			<div className="flex gap-5 items-center my-36 px-16">
 				<motion.video
-					initial={{ x: -300, opacity: 0 }}
-					whileInView={{ x: 0, opacity: 1 }}
+					ref={ref1}
+					initial={{ x: -500, opacity: 0 }}
+					animate={inView1 ? { x: 0, opacity: 1 } : { x: -500, opacity: 0 }}
 					transition={{ duration: 0.8 }}
-					viewport={{ once: true }}
+					viewport={{ once: false }}
 					src="/BSP.mp4"
 					autoPlay
 					muted
@@ -81,11 +97,13 @@ const OurConcept = () => {
 					playsInline
 					className="w-1/2"
 				/>
+
 				<motion.div
-					initial={{ x: 300, opacity: 0 }}
-					whileInView={{ x: 0, opacity: 1 }}
+					ref={ref2}
+					initial={{ x: 500, opacity: 0 }}
+					animate={inView2 ? { x: 0, opacity: 1 } : { x: 500, opacity: 0 }}
 					transition={{ duration: 0.8 }}
-					viewport={{ once: true }}
+					viewport={{ once: false }}
 					className="text-center w-1/2 "
 				>
 					<h3 className="font-proximanova3 text-[2rem] mb-3 ">{t("OurConceptTitle")}</h3>
@@ -97,10 +115,11 @@ const OurConcept = () => {
 			<div className="flex gap-5 items-center px-16">
 				<motion.div
 					className="w-1/2"
+					ref={ref3}
 					initial={{ x: -600, opacity: 0 }}
-					whileInView={{ x: 0, opacity: 1 }}
+					animate={inView3 ? { x: 0, opacity: 1 } : { x: -600, opacity: 0 }}
 					transition={{ duration: 0.8 }}
-					viewport={{ once: true }}
+					viewport={{ once: false }}
 				>
 					<h3 className="font-proximanova3 text-[2rem] mb-3"> {t("HostAnEventTitle")}</h3>
 					<p className="text-sm font-proximanova3 mb-10">{t("HostAnEventText")}</p>
@@ -127,10 +146,11 @@ const OurConcept = () => {
 				</motion.div>
 				<motion.div
 					className="w-1/2 relative"
-					initial={{ x: 300, opacity: 0 }}
-					whileInView={{ x: 0, opacity: 1 }}
+					ref={ref4}
+					initial={{ x: 500, opacity: 0 }}
+					animate={inView4 ? { x: 0, opacity: 1 } : { x: 500, opacity: 0 }}
 					transition={{ duration: 0.8 }}
-					viewport={{ once: true }}
+					viewport={{ once: false }}
 				>
 					<Carousel>
 						<CarouselContent>
@@ -153,20 +173,22 @@ const OurConcept = () => {
 			{/* Spaces */}
 			<div className="bg-[#1C1C1C] flex flex-col text-white mt-24">
 				<motion.h2
+					ref={ref5}
 					initial={{ y: 200 }}
-					whileInView={{ y: 0, opacity: 1 }}
+					animate={inView5 ? { y: 0 } : { y: 200 }}
 					transition={{ duration: 0.8 }}
-					viewport={{ once: true }}
+					viewport={{ once: false }}
 					className="text-[3.5rem] pt-14 pb-5 font-proximanova5 text-center"
 				>
 					{t("HostAnyEventAnywhere")}
 				</motion.h2>
 				<div className="flex items-center justify-center px-16">
 					<motion.div
-						initial={{ x: -300 }}
-						whileInView={{ x: 0, opacity: 1 }}
+						ref={ref6}
+						initial={{ x: -500, opacity: 0 }}
+						animate={inView6 ? { x: 0, opacity: 1 } : { x: -500, opacity: 0 }}
 						transition={{ duration: 0.8 }}
-						viewport={{ once: true }}
+						viewport={{ once: false }}
 						className="w-1/2 relative"
 					>
 						<Carousel>
@@ -192,10 +214,11 @@ const OurConcept = () => {
 						</Carousel>
 					</motion.div>
 					<motion.div
-						initial={{ x: 300, opacity: 0 }}
-						whileInView={{ x: 0, opacity: 1 }}
+						ref={ref7}
+						initial={{ x: 500, opacity: 0 }}
+						animate={inView7 ? { x: 0, opacity: 1 } : { x: 500, opacity: 0 }}
 						transition={{ duration: 0.8 }}
-						viewport={{ once: true }}
+						viewport={{ once: false }}
 						className="w-1/2 flex flex-col justify-center gap-y-20 items-center pl-3"
 					>
 						{spaces.map((sp) => (
@@ -208,7 +231,6 @@ const OurConcept = () => {
 								</div>
 								<p className="text-sm font-proximanova3 hover:text-white">{sp.desc}</p>
 							</div>
-
 						))}
 					</motion.div>
 				</div>

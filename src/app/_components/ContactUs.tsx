@@ -1,26 +1,34 @@
 "use client"
 import GoogleMap from "@/components/GoogleMap"
-import { motion } from "framer-motion"
+import { motion, useInView } from "framer-motion"
 import { useTranslations } from "next-intl"
-import React from "react"
+import React, { useRef } from "react"
 
 const ContactUs = () => {
 	const t = useTranslations("contactUs")
 
+	const ref8 = useRef(null)
+	const ref9 = useRef(null)
+
+	const inView8 = useInView(ref8)
+	const inView9 = useInView(ref9)
+
 	return (
 		<div className="px-14 py-4 h-full ">
 			<motion.h3
+				ref={ref8}
 				initial={{ y: 200 }}
-				whileInView={{ y: 0 }}
+				animate={inView8 ? { y: 0 } : { y: -200 }}
 				transition={{ duration: 1 }}
-				viewport={{ once: true }}
+				viewport={{ once: false }}
 				className="font-proximanova3 text-[2rem] text-center mb-10 "
 			>
 				{t("ContactUs")}
 			</motion.h3>
 			<motion.div
+				ref={ref9}
 				initial={{ y: 150 }}
-				whileInView={{ y: 0 }}
+				animate={inView9 ? { y: 0 } : { y: 150 }}
 				transition={{ duration: 0.8 }}
 				viewport={{ once: true }}
 				className="flex gap-x-7"

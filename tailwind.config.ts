@@ -10,6 +10,9 @@ export default {
 	],
 	theme: {
 		extend: {
+			maskImage: {
+				'gradient': 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%)',
+			  },
 			fontFamily: {
 				proximanova7: ["var(--font-proximanova-black)", ...defaultTheme.fontFamily.sans],
 				proximanova6: ["var(--font-proximanova-extrabold)", ...defaultTheme.fontFamily.sans],

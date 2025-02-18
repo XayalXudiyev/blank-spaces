@@ -1,19 +1,16 @@
 "use client"
 
-import {
-	NavigationMenu,
-	NavigationMenuContent,
-	NavigationMenuItem,
-	NavigationMenuLink,
-	NavigationMenuList,
-	NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu"
 import { useTranslations } from "next-intl"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import LocaleSwitcher from "../localSwitcher/LocaleSwithcher"
 import { Button } from "../ui/button"
+import {
+	HoverCard,
+	HoverCardContent,
+	HoverCardTrigger,
+} from "@/components/ui/hover-card"
 
 interface NavItem {
 	name: string
@@ -51,71 +48,60 @@ const Navbar = () => {
 	return (
 		<nav className="fixed w-full flex items-center justify-center font-proximanova4 text-white bg-[#1C1C1C] z-50 ">
 			<div className="absolute left-0 pl-16">
-				<NavigationMenu>
-					<NavigationMenuList className="space-x-10">
-						{navItems.map((item) => {
-							const isActive = item.href ? pathname === item.href : false
-							const isParentActive = item.submenu?.some((subItem) =>
-								pathname.startsWith(subItem.href ?? ""),
-							)
-
-							return (
-								<NavigationMenuItem key={item.name}>
-									{item.submenu ? (
-										<>
-											<NavigationMenuTrigger
-												className={`font-proximanova5  ${
-													isParentActive ? "text-[#D2B48C]" : "data-[state=open]:text-[#D2B48C]"
-												}`}
+				<nav className="flex space-x-10 items-center">
+					{navItems.map((item) => {
+						const isActive = item.href ? pathname === item.href : false
+						return (
+							<div key={item.name} className="relative">
+								{item.submenu ? (
+									<HoverCard
+										closeDelay={Number(100)}
+										openDelay={Number(0)}
+									>
+										<HoverCardTrigger asChild>
+											<button
+												className={`font-proximanova5 py-3 ${isActive ? "text-[#D2B48C]" : "hover:text-[#D2B48C]"
+													}`}
 											>
 												{item.name}
-											</NavigationMenuTrigger>
-											<NavigationMenuContent>
-												<ul className="grid gap-3 p-3 w-44 text-sm border-none outline-none bg-[#FBF8F4]">
-													{item.submenu.map((subItem) => {
-														const isSubActive = pathname === subItem.href
-
-														return (
-															<li key={subItem.name}>
-																{subItem.href && (
-																	<NavigationMenuLink asChild>
-																		<Link
-																			href={subItem.href}
-																			className={`block py-1 text-sm font-proximanova3 ${
-																				isSubActive
-																					? "text-[#D2B48C]"
-																					: "hover:bg-[#ECE0CF] px-2 focus:bg-[#E4D1B9]"
-																			}`}
-																		>
-																			{subItem.name}
-																		</Link>
-																	</NavigationMenuLink>
-																)}
-															</li>
-														)
-													})}
-												</ul>
-											</NavigationMenuContent>
-										</>
-									) : (
-										item.href && (
-											<NavigationMenuLink asChild>
-												<Link
-													href={item.href}
-													className={`rounded-md text-sm ${
-														isActive ? "text-[#D2B48C]" : "hover:text-[#D2B48C]"
-													}`}
-												>
-													{item.name}
-												</Link>
-											</NavigationMenuLink>
-										)
-									)}
-								</NavigationMenuItem>
-							)
-						})}
-					</NavigationMenuList>
-				</NavigationMenu>
+											</button>
+										</HoverCardTrigger>
+										<HoverCardContent
+											align="start"
+											side="bottom"
+											sideOffset={Number(3)}
+											className="bg-[#FBF8F4] w-44 p-2 rounded-none shadow-lg"
+										>
+											<ul className="space-y-2">
+												{item.submenu.map((subItem) => (
+													<li key={subItem.name}>
+														<Link
+															href={subItem.href as string}
+															className={`block py-1 px-2 text-sm font-proximanova3 ${pathname === subItem.href
+																? "text-[#D2B48C]"
+																: "hover:bg-[#ECE0CF] rounded"
+																}`}
+														>
+															{subItem.name}
+														</Link>
+													</li>
+												))}
+											</ul>
+										</HoverCardContent>
+									</HoverCard>
+								) : (
+									<Link
+										href={item.href as string}
+										className={`font-proximanova5 py-3 ${isActive ? "text-[#D2B48C]" : "hover:text-[#D2B48C]"
+											}`}
+									>
+										{item.name}
+									</Link>
+								)}
+							</div>
+						)
+					})}
+				</nav>
 			</div>
 
 			<div>
@@ -128,7 +114,7 @@ const Navbar = () => {
 				<LocaleSwitcher />
 				<Button
 					size={"sm"}
-					className={`first:bg-transparent hover:bg-transparent border rounded-none border-white ml-4 ${pathname === "/contact" ? "text-[#D2B48C] border-[#D2B48C] bg-transparent " : "hover:text-white bg-transparent"}`}
+					className={`first:bg-transparent hover:bg-transparent border rounded-none  ml-4 ${pathname === "/contact" ?  "text-white bg-transparent border-white hover:text-[#D2B48C] hover:border-[#D2B48C]" :  "text-[#D2B48C] hover:text-white hover:border-white border-[#D2B48C] bg-transparent  "}`}
 				>
 					<Link href="/contact" className={"text-sm px-1 "}>
 						Contact us

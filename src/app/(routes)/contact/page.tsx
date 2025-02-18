@@ -20,9 +20,8 @@ export interface FormData {
 	email: string
 	number: string
 	message: string
-	country: string
-	subject: string
 	countryPrefix: string
+	subject: string
 }
 
 const countries = [
@@ -34,6 +33,7 @@ const countries = [
 	{ code: "+81", name: "Japan" },
 ]
 
+
 const ContactPage = () => {
 	const { register, handleSubmit } = useForm<FormData>()
 	const t = useTranslations("contactUs")
@@ -43,139 +43,109 @@ const ContactPage = () => {
 	}
 
 	return (
-		<div className="flex justify-between px-16 py-14 w-full gap-20">
-			<div className="w-1/2">
-				<Image src={IMG} alt="Photo" width={0} height={0} />
-			</div>
+		<div className="flex items-center  px-16 py-14 w-full gap-20 h-[calc(100vh-205.6px)]">
+			<div className=" w-full flex justify-between items-start">
+				<div className="w-1/2 flex items-start justify-start">
+					<Image src={IMG} alt="Photo" width={0} height={0} />
+				</div>
+				<div className="w-[576px] h-full flex ">
+					<form onSubmit={handleSubmit(onSubmit)} className=" w-full">
+						<h2 className="text-[2rem] mb-10 font-proximanova3 text-center">
+							{t("SendUsYourRequest")}
+						</h2>
 
-			<div className="w-1/2 h-full">
-				<form onSubmit={handleSubmit(onSubmit)} className="py-5">
-					<h2 className=" text-[2rem] mb-10 font-proximanova3 text-center">
-						{" "}
-						{t("SendUsYourRequest")}
-					</h2>
-					<div className="grid grid-cols-2 gap-8">
-						<FormInput
-							id="firstName"
-							label={t("FirstName")}
-							placeholder={t("FirstName")}
-							validation={{ required: t("FirstNameRequired") }}
-							register={register}
-						/>
-						<FormInput
-							id="lastName"
-							label={t("LastName")}
-							placeholder={t("LastName")}
-							validation={{ required: t("LastNameRequired") }}
-							register={register}
-						/>
-						<FormSelect
-							id="countryPrefix"
-							label={t("Country")}
-							options={countries.map((country) => ({
-								value: country.code,
-								label: `${country.name} (${country.code})`,
-							}))}
-							validation={{ required: t("CountryPrefixIsRequired") }}
-							register={register}
-						/>
-						<FormInput
-							id="number"
-							label={t("Number")}
-							placeholder="+32"
-							validation={{ required: t("PhoneRequired") }}
-							register={register}
-						/>
-						<FormInput
-							id="email"
-							label={t("Email")}
-							type="email"
-							placeholder={t("EnterEmail")}
-							validation={{ required: t("EmailRequired") }}
-							register={register}
-						/>
+						<div className="grid grid-cols-2 gap-x-4 gap-y-8 w-[576px]">
+							<div className="flex flex-col h-[66px] justify-between">
+								<label className="text-sm font-medium">{t("FirstName")}</label>
+								<Input
+									{...register("firstName", { required: t("FirstNameRequired") })}
+									placeholder={t("FirstName")}
+									className="text-[#4A4A4A] bg-transparent w-[280px] border-[#1C1C1C] rounded-none outline-none ring-0 focus-visible:ring-0 focus:border-[#1c1c1c] focus-visible:ring-offset-0"
+								/>
+							</div>
 
-						<FormInput
-							id="subject"
-							label={t("Subject")}
-							placeholder={t("EnterSubject")}
-							validation={{ required: t("SubjectRequired") }}
-							register={register}
-						/>
-					</div>
-					<div className="flex flex-col mt-4">
-						<label htmlFor="message" className="text-sm font-medium">
-							{t("YourMessage")}
-						</label>
-						<FormTextarea id="message" placeholder={t("TypeYourMessageHere")} register={register} />
-					</div>
-					<div>
-						<div className="flex justify-center relative text-center py-3">
-							<Button
-								size="sm"
-								className="rounded-none bg-black hover:bg-black text-white  p-0 px-5"
-								type="submit"
-							>
+							<div className="flex flex-col h-[66px] justify-between">
+								<label className="text-sm font-medium">{t("LastName")}</label>
+								<Input
+									{...register("lastName", { required: t("LastNameRequired") })}
+									placeholder={t("LastName")}
+									className="text-[#4A4A4A] bg-transparent w-[280px] border-[#1C1C1C] rounded-none outline-none ring-0 focus-visible:ring-0 focus:border-[#1c1c1c] focus-visible:ring-offset-0"
+								/>
+							</div>
+
+
+							<div className="flex flex-col h-[66px] justify-between">
+								<label className="text-sm font-medium">{t("Country")}</label>
+								<Select {...register("countryPrefix", { required: t("CountryPrefixIsRequired") })}>
+									<SelectTrigger className="text-[#4A4A4A] bg-transparent border-[#1C1C1C] max-w-[280px] rounded-none outline-none ring-0 focus-visible:ring-0 focus:border-[#1c1c1c] focus-visible:ring-offset-0">
+										<SelectValue placeholder={"Select"}  />
+									</SelectTrigger>
+
+									<SelectContent>
+										{countries.map((country) => (
+											<SelectItem key={country.code} value={country.code}>
+												{country.name} ({country.code})
+											</SelectItem>
+										))}
+									</SelectContent>
+								</Select>
+							</div>
+
+
+							<div className="flex flex-col h-[66px] justify-between">
+								<label className="text-sm font-medium">{t("Number")}</label>
+								<Input
+									{...register("number", { required: t("PhoneRequired") })}
+									placeholder="+32"
+									className="text-[#4A4A4A] bg-transparent w-[280px] border-[#1C1C1C] rounded-none outline-none ring-0 focus-visible:ring-0 focus:border-[#1c1c1c] focus-visible:ring-offset-0"
+								/>
+							</div>
+
+							<div className="flex flex-col h-[66px] justify-between">
+								<label className="text-sm font-medium">{t("Email")}</label>
+								<Input
+									type="email"
+									{...register("email", { required: t("EmailRequired") })}
+									placeholder={t("EnterEmail")}
+									className="text-[#4A4A4A] bg-transparent w-[280px] border-[#1C1C1C] rounded-none outline-none ring-0 focus-visible:ring-0 focus:border-[#1c1c1c] focus-visible:ring-offset-0"
+								/>
+							</div>
+
+							<div className="flex flex-col h-[66px] justify-between">
+								<label className="text-sm font-medium">{t("Subject")}</label>
+								<Input
+									{...register("subject", { required: t("SubjectRequired") })}
+									placeholder={t("EnterSubject")}
+									className="text-[#4A4A4A] bg-transparent w-[280px] border-[#1C1C1C] rounded-none outline-none ring-0 focus-visible:ring-0 focus:border-[#1c1c1c] focus-visible:ring-offset-0"
+								/>
+							</div>
+						</div>
+						<div className=" flex items-center gap-1 my-1">
+							<input className="  border-[2px] border-[#4A4A4A]" type="checkbox" /> <span className=" text-[#7A7A7A]  text-xs font-normal">Sign up for news & updates</span>
+						</div>
+						<div className="flex flex-col mt-4  gap-[6px]">
+							<label className="text-sm font-medium">{t("YourMessage")}</label>
+							<Textarea
+								{...register("message")}
+								placeholder={t("TypeYourMessageHere")}
+								className="text-[#4A4A4A] bg-transparent border-[#1C1C1C] min-h-[128px] w-[576px] rounded-none outline-none ring-0 focus-visible:ring-0 focus:border-[#1c1c1c] focus-visible:ring-offset-0"
+							/>
+						</div>
+
+						<div className="flex justify-center py-3">
+							<Button size="sm" className="rounded-none bg-black hover:bg-black text-white px-5" type="submit">
 								{t("ContactUs")}
 							</Button>
 						</div>
-					</div>
-				</form>
+					</form>
+				</div>
 			</div>
+
+
+			{/* Forma */}
+
 		</div>
 	)
 }
 
 export default ContactPage
-
-const FormInput = ({ id, label, placeholder, validation, type = "text", register }: any) => {
-	return (
-		<div className="flex flex-col">
-			<label htmlFor={id} className="text-sm font-medium">
-				{label}
-			</label>
-			<Input
-				id={id}
-				type={type}
-				{...register(id, validation)}
-				placeholder={placeholder}
-				className="text-[#4A4A4A] bg-transparent border-[#1C1C1C] rounded-none outline-none ring-0 focus-visible:ring-0 focus:border-[#1c1c1c] focus-visible:ring-offset-0"
-			/>
-		</div>
-	)
-}
-
-const FormTextarea = ({ id, placeholder, register }: any) => {
-	return (
-		<Textarea
-			id={id}
-			{...register(id)}
-			placeholder={placeholder}
-			className="text-[#4A4A4A] bg-transparent border-[#1C1C1C] rounded-none outline-none ring-0 focus-visible:ring-0 focus:border-[#1c1c1c] focus-visible:ring-offset-0"
-		/>
-	)
-}
-
-const FormSelect = ({ id, label, options, validation, register }: any) => {
-	return (
-		<div className="flex flex-col">
-			<label htmlFor={id} className="text-sm font-medium">
-				{label}
-			</label>
-			<div className="mt-1">
-				<Select {...register(id, validation)}>
-					<SelectTrigger className="text-[#4A4A4A] bg-transparent border-[#1C1C1C] rounded-none outline-none ring-0 focus-visible:ring-0 focus:border-[#1c1c1c] focus-visible:ring-offset-0">
-						<SelectValue placeholder={"Select"} />
-					</SelectTrigger>
-					<SelectContent>
-						{options.map((option: any) => (
-							<SelectItem key={option.value} value={option.value}>
-								{option.label}
-							</SelectItem>
-						))}
-					</SelectContent>
-				</Select>
-			</div>
-		</div>
-	)
-}

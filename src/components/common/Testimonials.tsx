@@ -166,8 +166,14 @@ function Testimonials() {
 	}, [])
 
 	const toggleExpand = (index: number) => {
-		setExpanded((prev) => ({ ...prev, [index]: !prev[index] }))
-	}
+		setExpanded((prev) => {
+			if (prev[index]) {
+				return {};
+			}
+			return { [index]: true };
+		});
+	};
+	
 
 	const scrollTo = useCallback(
 		(index: number) => {
@@ -216,8 +222,7 @@ function Testimonials() {
 					<Button onClick={scrollPrev} className="bg-transparent hover:bg-transparent text-black">
 						<FaArrowUp size={20} />
 					</Button>
-
-					<div className="flex flex-col items-center space-y-1">
+					<div className="flex flex-col items-center space-y-1 mask-gradient">
 						<div className="overflow-hidden" ref={carouselRef}>
 							<div className="flex flex-col h-[240px] ">
 								{testimonials.map((tml, index) => (
@@ -226,16 +231,15 @@ function Testimonials() {
 										onClick={() => scrollTo(index)}
 										className={`rounded-full w-8 h-8 text-sm font-proximanova3 flex items-center justify-center text-black hover:bg-transparent font-medium ${index === selectedIndex
 											? "bg-transparent font-proximanova5 text-base "
-											: " bg-transparent "
+											: " bg-transparent opacity-80 "
 											}`}
 									>
-										{tml.id}
+										{tml.id.toString().padStart(2, "0")}
 									</Button>
 								))}
 							</div>
 						</div>
 					</div>
-
 					<Button onClick={scrollNext} className="bg-transparent hover:bg-transparent text-black">
 						<FaArrowDown size={20} />
 					</Button>
@@ -249,21 +253,23 @@ function Testimonials() {
 								>
 									<CardContent className="flex flex-col items-center transition-all duration-1000 justify-center min-h-[7.8rem] text-center py-4 w-full">
 										<div
-											className={`overflow-hidden transition-all duration-1000 ease-in-out ${expanded[index] ? "h-full" : "line-clamp-3"}`}
+											className={`overflow-hidden transition-all ease-in-out duration-700   ${expanded[index] ? "line-clamp-none" : "line-clamp-3"}`}
 										>
-											<p ref={(el) => (textRefs.current[index] = el)}>{tml.description}</p>
+											<p ref={(el) => { textRefs.current[index] = el; }}>{tml.description}</p>
 										</div>
-
 										<div className="flex w-1/2 ml-auto justify-between transition-all duration-1000">
 											<Button
-												className="p-0 h-fit bg-transparent hover:bg-transparent text-black transition-all duration-1000 text-xs font-proximanova4"
-												onClick={() => toggleExpand(index)}
+												className="p-0 h-fit bg-transparent hover:bg-transparent text-black  text-xs font-proximanova4"
+												onClick={() => {
+													toggleExpand(index)
+													scrollTo(index)
+												}}
 												disabled={!isOverflowing[index]}
 											>
 												<span>{expanded[index] ? "Less" : "More"}</span>
 												<IoIosArrowDown
 													size={20}
-													className={`${expanded[index] && "rotate-180 transition-all duration-1000"}`}
+													className={`transition-all ease-in-out duration-700 ${expanded[index] ? "rotate-180 " : 'rotate-0'}`}
 												/>
 											</Button>
 											<div className={`absolute text-xs transition-all duration-1000 font-proximanova3 mt-1)] ${index % 2 === 0 ? "left-[6%]" : "right-[6%]"

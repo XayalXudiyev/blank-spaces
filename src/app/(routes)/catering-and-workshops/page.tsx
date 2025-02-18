@@ -106,7 +106,7 @@ const CateringAndWorkshops = () => {
 											onClick={() => toggleExpand(index)}
 											className="p-0  h-0 pl-1 font-proximanova4 text-xs bg-transparent hover:bg-transparent underline"
 										>
-											{expanded[index] ? t("showMore") : t("showLess")}
+											{expanded[index] ? t("showLess") : t("showMore")}
 										</Button>
 									</p>
 								</CarouselItem>

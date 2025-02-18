@@ -8,22 +8,29 @@ import FAQ from "@/components/common/FAQ"
 import ContactForm from "@/components/common/SendRequest"
 import Testimonials from "@/components/common/Testimonials"
 import { Button } from "@/components/ui/button"
-import { motion } from "framer-motion"
+import { motion, useInView } from "framer-motion"
 import { useTranslations } from "next-intl"
 import img from "../../../../../public/events/corporate-meetings/1.png"
+import { useRef } from "react"
 
 const Conference = () => {
 	const t = useTranslations("events")
+	const ref1 = useRef(null)
+	const ref2 = useRef(null)
 
+
+	const inView1 = useInView(ref1)
+	const inView2 = useInView(ref2)
 	return (
 		<div>
 			<div className=" container m-auto  mt-10 mb-16 ">
 				<div className="w-full flex justify-end relative">
 					<motion.div
+						ref={ref1}
 						initial={{ x: -300, opacity: 0 }}
-						whileInView={{ x: 0, opacity: 1 }}
+						animate={inView1 ? { x: 0, opacity: 1 } : { x: -300, opacity: 0 }}
 						transition={{ duration: 0.8 }}
-						viewport={{ once: true }}
+						viewport={{ once: false }}
 						className=" bg-primary absolute left-0 top-14 w-[570px] h-[600px] z-40  py-24 px-14 space-y-5"
 					>
 						<h2 className="text-3xl font-proximanova3">{t("birthday-weddings")}</h2>
@@ -38,10 +45,11 @@ const Conference = () => {
 					</motion.div>
 
 					<motion.div
-						initial={{ x: 300, opacity: 0 }}
-						whileInView={{ x: 0, opacity: 1 }}
-						transition={{ duration: 0.8 }}
-						viewport={{ once: true }}
+					ref={ref2}
+					initial={{ x: 300, opacity: 0 }}
+					animate={inView2 ? { x: 0, opacity: 1 } : { x: 300, opacity: 0 }}
+					transition={{ duration: 0.8 }}
+					viewport={{ once: false }}
 					>
 						<Carousel className="basis-[55.5%] w-[650px]">
 							<CarouselContent>

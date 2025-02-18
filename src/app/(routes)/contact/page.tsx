@@ -42,11 +42,12 @@ const ContactPage = () => {
 		console.log(data)
 	}
 
+
 	return (
-		<div className="flex items-center  px-16 py-14 w-full gap-20 h-[calc(100vh-205.6px)]">
+		<div className="flex items-center  px-16 py-14 w-full gap-20 min-h-screen">
 			<div className=" w-full flex justify-between items-start">
 				<div className="w-1/2 flex items-start justify-start">
-					<Image src={IMG} alt="Photo" width={0} height={0} />
+					<Image src={IMG} alt="Photo" width={0} height={0} className=" " />
 				</div>
 				<div className="w-[576px] h-full flex ">
 					<form onSubmit={handleSubmit(onSubmit)} className=" w-full">
@@ -73,7 +74,6 @@ const ContactPage = () => {
 								/>
 							</div>
 
-
 							<div className="flex flex-col h-[66px] justify-between">
 								<label className="text-sm font-medium">{t("Country")}</label>
 								<Select {...register("countryPrefix", { required: t("CountryPrefixIsRequired") })}>
@@ -90,7 +90,6 @@ const ContactPage = () => {
 									</SelectContent>
 								</Select>
 							</div>
-
 
 							<div className="flex flex-col h-[66px] justify-between">
 								<label className="text-sm font-medium">{t("Number")}</label>
@@ -141,8 +140,6 @@ const ContactPage = () => {
 				</div>
 			</div>
 
-
-			{/* Forma */}
 
 		</div>
 	)

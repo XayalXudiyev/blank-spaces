@@ -48,7 +48,7 @@ const proximanovaThin = localFont({
 
 export const metadata: Metadata = {
 	title: "Blank Space",
-	description: "Created by Qaqash",
+	description: "Created by Xayal",
 }
 
 export default async function RootLayout({

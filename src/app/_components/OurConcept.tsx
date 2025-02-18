@@ -22,6 +22,7 @@ import { useEffect, useRef, useState } from "react"
 
 import { useTranslations } from "next-intl"
 
+
 const OurConcept = () => {
 	const t = useTranslations("home")
 	const services = [

@@ -46,12 +46,12 @@ export default function LocaleSwitcher() {
 
 	return (
 		<Select onValueChange={onSelectChange} defaultValue={localeActive} disabled={isPending}>
-			<SelectTrigger className="bg-transparent border-none outline-none ring-0 focus:ring-offset-0 focus:ring-0 focus:outline-none gap-x-1 md:text-base w-fit">
+			<SelectTrigger className="bg-transparent border-none outline-none ring-0 focus:ring-offset-0 focus:ring-0 focus:outline-none gap-x-1 md:text-base w-fit [&>svg]:data-[state=open]:rotate-180 ">
 				<span className="text-base font-proximanova3 hover:text-[#D2B48C]">
 					{localeLabels[localeActive]}
 				</span>
 			</SelectTrigger>
-			<SelectContent>
+			<SelectContent className="mt-[3px] rounded-none shadow-none bg-[#FBF8F4]">
 				<SelectGroup>
 					<SelectItem value="en">
 						<div className="flex gap-x-1">

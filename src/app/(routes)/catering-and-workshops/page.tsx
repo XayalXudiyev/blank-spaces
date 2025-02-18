@@ -9,10 +9,10 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from "@/components/ui/carousel"
-import { motion } from "framer-motion"
+import { motion, useInView } from "framer-motion"
 import { useTranslations } from "next-intl"
 import Image from "next/image"
-import React, { useState } from "react"
+import React, { useRef, useState } from "react"
 import IMG from "../../../../public/catering/Picture.png"
 
 interface ExpandedState {
@@ -36,16 +36,29 @@ const CateringAndWorkshops = () => {
 	}
 
 	const cateringTexts = [t("obaoText"), t("mazmizText"), t("itraturiText")]
+	const ref1 = useRef(null)
+	const ref2 = useRef(null)
+	const ref3 = useRef(null)
+	const ref4 = useRef(null)
+	const ref5 = useRef(null)
+	const ref6 = useRef(null)
 
+	const inView1 = useInView(ref1)
+	const inView2 = useInView(ref2)
+	const inView3 = useInView(ref3)
+	const inView4 = useInView(ref4)
+	const inView5 = useInView(ref5)
+	const inView6 = useInView(ref6)
 	return (
 		<div className="w-full ">
 			<div className="flex py-16 pr-40 bg-primary">
 				<div className="flex">
 					<motion.div
-						initial={{ x: -300, opacity: 0 }}
-						whileInView={{ x: 0, opacity: 1 }}
+						ref={ref1}
+						initial={{ x: -500, opacity: 0 }}
+						animate={inView1 ? { x: 0, opacity: 1 } : { x: -500, opacity: 0 }}
 						transition={{ duration: 0.8 }}
-						viewport={{ once: true }}
+						viewport={{ once: false }}
 						className="w-full flex flex-col justify-center space-y-2 bg-white px-16"
 					>
 						<p className="text-base font-proximanova4">{t("culinaryPerfection")}</p>
@@ -57,10 +70,11 @@ const CateringAndWorkshops = () => {
 						</div>
 					</motion.div>
 					<motion.div
-						initial={{ x: 300, opacity: 0 }}
-						whileInView={{ x: 0, opacity: 1 }}
+						ref={ref2}
+						initial={{ x: 500, opacity: 0 }}
+						animate={inView2 ? { x: 0, opacity: 1 } : { x: 500, opacity: 0 }}
 						transition={{ duration: 0.8 }}
-						viewport={{ once: true }}
+						viewport={{ once: false }}
 						className="h-auto w-9/12"
 					>
 						<Image src={IMG} alt="Catering" width={10000} height={1000} />
@@ -69,10 +83,11 @@ const CateringAndWorkshops = () => {
 			</div>
 
 			<motion.div
-				initial={{ y: 300, opacity: 0 }}
-				whileInView={{ y: 0, opacity: 1 }}
+				ref={ref3}
+				initial={{ y: 500, opacity: 0 }}
+				animate={inView3 ? { y: 0, opacity: 1 } : { y: -500, opacity: 0 }}
 				transition={{ duration: 0.8 }}
-				viewport={{ once: true }}
+				viewport={{ once: false }}
 				className="w-full flex flex-col justify-center items-center bg-white py-16"
 			>
 				<h2 className="text-4xl font-proximanova3 text-center">{t("ourTrustedCaterers")}</h2>
@@ -91,7 +106,7 @@ const CateringAndWorkshops = () => {
 											onClick={() => toggleExpand(index)}
 											className="p-0  h-0 pl-1 font-proximanova4 text-xs bg-transparent hover:bg-transparent underline"
 										>
-											{expanded[index] ? t("showMore") : t("showLess")}
+											{expanded[index] ? t("showLess") : t("showMore")}
 										</Button>
 									</p>
 								</CarouselItem>
@@ -105,19 +120,21 @@ const CateringAndWorkshops = () => {
 			<div className="flex py-16 pl-40 bg-primary">
 				<div className="flex">
 					<motion.div
-						initial={{ x: -300, opacity: 0 }}
-						whileInView={{ x: 0, opacity: 1 }}
+						ref={ref4}
+						initial={{ x: -500, opacity: 0 }}
+						animate={inView4 ? { x: 0, opacity: 1 } : { x: -500, opacity: 0 }}
 						transition={{ duration: 0.8 }}
-						viewport={{ once: true }}
+						viewport={{ once: false }}
 						className="h-auto w-9/12"
 					>
 						<Image src={IMG} alt="Catering" width={10000} height={1000} />
 					</motion.div>
 					<motion.div
-						initial={{ x: 300, opacity: 0 }}
-						whileInView={{ x: 0, opacity: 1 }}
+						ref={ref5}
+						initial={{ x: 500, opacity: 0 }}
+						animate={inView5 ? { x: 0, opacity: 1 } : { x: 500, opacity: 0 }}
 						transition={{ duration: 0.8 }}
-						viewport={{ once: true }}
+						viewport={{ once: false }}
 						className="w-full flex flex-col justify-center space-y-2 bg-white px-16"
 					>
 						<p className="text-lg font-proximanova4">{t("dinamicExperiences")}</p>
@@ -132,10 +149,11 @@ const CateringAndWorkshops = () => {
 				</div>
 			</div>
 			<motion.div
+				ref={ref6}
 				initial={{ y: 300, opacity: 0 }}
-				whileInView={{ y: 0, opacity: 1 }}
+				animate={inView6 ? { y: 0, opacity: 1 } : { y: 300, opacity: 0 }}
 				transition={{ duration: 0.8 }}
-				viewport={{ once: true }}
+				viewport={{ once: false }}
 				className="w-full flex flex-col justify-center items-center bg-white py-16"
 			>
 				<h2 className="text-4xl font-proximanova3 text-center">
@@ -156,7 +174,7 @@ const CateringAndWorkshops = () => {
 											onClick={() => toggleExpand(index)}
 											className="p-0  h-0 pl-1 font-proximanova4 text-xs bg-transparent hover:bg-transparent underline"
 										>
-											{expanded[index] ? t("showMore") : t("showLess")}
+											{expanded[index] ? t("showLess") : t("showMore")}
 										</Button>
 									</p>
 								</CarouselItem>

@@ -1,7 +1,7 @@
 {
     "SendUsYourRequest": "SEND US YOUR REQUEST!",
     "Phone": "Phone",
-    "Email": "Email",
+    "Email": "*Email",
     "EnterEmail": "Enter Email",
     "YourContactDetails": "Your contact details",
 
@@ -10,7 +10,7 @@
     "YourMessage": "Your Message",
     "TypeYourMessageHere": "Type your message here...",
     "Country": "*Country",
-    "Number" : "Nummber",
+    "Number" : "Number",
     "Subject": "*Subject",
     "EnterSubject": "Enter Subject",
     "Select"  : "Select",

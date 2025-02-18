@@ -134,7 +134,7 @@ export default ContactForm
 
 const FormInput = ({ id, label, placeholder, validation, type = "text", register }: any) => {
 	return (
-		<div className="flex flex-col">
+		<div className="flex flex-col justify-between">
 			<label htmlFor={id} className="text-sm font-medium">
 				{label}
 			</label>
@@ -143,7 +143,7 @@ const FormInput = ({ id, label, placeholder, validation, type = "text", register
 				type={type}
 				{...register(id, validation)}
 				placeholder={placeholder}
-				className="text-[#4A4A4A] bg-transparent border-[#1C1C1C] rounded-none outline-none ring-0 focus-visible:ring-0 focus:border-[#1c1c1c] focus-visible:ring-offset-0"
+				className="text-[#4A4A4A] w-[280px] bg-transparent border-[#1C1C1C] rounded-none outline-none ring-0 focus-visible:ring-0 focus:border-[#1c1c1c] focus-visible:ring-offset-0"
 			/>
 		</div>
 	)
@@ -155,7 +155,7 @@ const FormTextarea = ({ id, placeholder, register }: any) => {
 			id={id}
 			{...register(id)}
 			placeholder={placeholder}
-			className="text-[#4A4A4A] bg-transparent border-[#1C1C1C] rounded-none outline-none ring-0 focus-visible:ring-0 focus:border-[#1c1c1c] focus-visible:ring-offset-0"
+			className="text-[#4A4A4A] bg-transparent border-[#1C1C1C] min-h-[128px] rounded-none outline-none ring-0 focus-visible:ring-0 focus:border-[#1c1c1c] focus-visible:ring-offset-0"
 		/>
 	)
 }

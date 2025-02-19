@@ -33,7 +33,6 @@ const countries = [
 	{ code: "+81", name: "Japan" },
 ]
 
-
 const ContactPage = () => {
 	const { register, handleSubmit } = useForm<FormData>()
 	const t = useTranslations("contactUs")
@@ -41,7 +40,6 @@ const ContactPage = () => {
 	const onSubmit = (data: FormData) => {
 		console.log(data)
 	}
-
 
 	return (
 		<div className="flex items-center  px-16 py-14 w-full gap-20 min-h-screen">
@@ -78,7 +76,7 @@ const ContactPage = () => {
 								<label className="text-sm font-medium">{t("Country")}</label>
 								<Select {...register("countryPrefix", { required: t("CountryPrefixIsRequired") })}>
 									<SelectTrigger className="text-[#4A4A4A] bg-transparent border-[#1C1C1C] max-w-[280px] rounded-none outline-none ring-0 focus-visible:ring-0 focus:border-[#1c1c1c] focus-visible:ring-offset-0">
-										<SelectValue placeholder={"Select"}  />
+										<SelectValue placeholder={"Select"} />
 									</SelectTrigger>
 
 									<SelectContent>
@@ -120,7 +118,10 @@ const ContactPage = () => {
 							</div>
 						</div>
 						<div className=" flex items-center gap-1 my-1">
-							<input className="  border-[2px] border-[#4A4A4A]" type="checkbox" /> <span className=" text-[#7A7A7A]  text-xs font-normal">Sign up for news & updates</span>
+							<input className="  border-[2px] border-[#4A4A4A]" type="checkbox" />{" "}
+							<span className=" text-[#7A7A7A]  text-xs font-normal">
+								Sign up for news & updates
+							</span>
 						</div>
 						<div className="flex flex-col mt-4  gap-[6px]">
 							<label className="text-sm font-medium">{t("YourMessage")}</label>
@@ -132,15 +133,17 @@ const ContactPage = () => {
 						</div>
 
 						<div className="flex justify-center py-3">
-							<Button size="sm" className="rounded-none bg-black hover:bg-black text-white px-5" type="submit">
+							<Button
+								size="sm"
+								className="rounded-none bg-black hover:bg-black text-white px-5"
+								type="submit"
+							>
 								{t("ContactUs")}
 							</Button>
 						</div>
 					</form>
 				</div>
 			</div>
-
-
 		</div>
 	)
 }

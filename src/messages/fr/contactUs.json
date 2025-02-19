@@ -1,15 +1,15 @@
 {
   "SendUsYourRequest": "ENVOYEZ-NOUS VOTRE DEMANDE !",
   "Phone": "Téléphone",
-  "Email": "E-mail",
+  "Email": "*E-mail",
   "EnterEmail": "Entrez votre e-mail",
   "YourContactDetails": "Vos coordonnées",
 
   "FirstName": "*Prénom",
-  "LastName": "Nom",
+  "LastName": "*Nom",
   "YourMessage": "Votre message",
   "TypeYourMessageHere": "Tapez votre message ici...",
-  "Country": "*Pays",
+  "Country": "Pays",
   "Number": "Numéro",
   "Subject": "*Sujet",
   "EnterSubject": "Entrez le sujet",

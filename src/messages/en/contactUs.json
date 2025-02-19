@@ -6,10 +6,10 @@
     "YourContactDetails": "Your contact details",
 
     "FirstName": "*First Name",
-    "LastName": "Last Name",
+    "LastName": "*Last Name",
     "YourMessage": "Your Message",
     "TypeYourMessageHere": "Type your message here...",
-    "Country": "*Country",
+    "Country": "Country",
     "Number" : "Number",
     "Subject": "*Subject",
     "EnterSubject": "Enter Subject",

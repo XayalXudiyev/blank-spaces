@@ -1,16 +1,12 @@
 "use client"
 
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
 import { useTranslations } from "next-intl"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import LocaleSwitcher from "../localSwitcher/LocaleSwithcher"
 import { Button } from "../ui/button"
-import {
-	HoverCard,
-	HoverCardContent,
-	HoverCardTrigger,
-} from "@/components/ui/hover-card"
 
 interface NavItem {
 	name: string
@@ -54,14 +50,12 @@ const Navbar = () => {
 						return (
 							<div key={item.name} className="relative">
 								{item.submenu ? (
-									<HoverCard
-										closeDelay={Number(100)}
-										openDelay={Number(0)}
-									>
+									<HoverCard closeDelay={Number(100)} openDelay={Number(0)}>
 										<HoverCardTrigger asChild>
 											<button
-												className={`font-proximanova5 py-3 ${isActive ? "text-[#D2B48C]" : "hover:text-[#D2B48C]"
-													}`}
+												className={`font-proximanova5 py-3 ${
+													isActive ? "text-[#D2B48C]" : "hover:text-[#D2B48C]"
+												}`}
 											>
 												{item.name}
 											</button>
@@ -77,10 +71,9 @@ const Navbar = () => {
 													<li key={subItem.name}>
 														<Link
 															href={subItem.href as string}
-															className={`block py-1 px-2 text-sm font-proximanova3 ${pathname === subItem.href
-																? "text-[#D2B48C]"
-																: "hover:bg-[#ECE0CF] "
-																}`}
+															className={`block py-1 px-2 text-sm font-proximanova3 ${
+																pathname === subItem.href ? "text-[#D2B48C]" : "hover:bg-[#ECE0CF] "
+															}`}
 														>
 															{subItem.name}
 														</Link>
@@ -92,8 +85,9 @@ const Navbar = () => {
 								) : (
 									<Link
 										href={item.href as string}
-										className={`font-proximanova5 py-3 ${isActive ? "text-[#D2B48C]" : "hover:text-[#D2B48C]"
-											}`}
+										className={`font-proximanova5 py-3 ${
+											isActive ? "text-[#D2B48C]" : "hover:text-[#D2B48C]"
+										}`}
 									>
 										{item.name}
 									</Link>
@@ -114,7 +108,7 @@ const Navbar = () => {
 				<LocaleSwitcher />
 				<Button
 					size={"sm"}
-					className={`first:bg-transparent hover:bg-transparent border rounded-none border-white text-white hover:text-[#D2B48C] hover:border-[#D2B48C] ml-4 ${pathname === "/contact" ?  " bg-transparent  " :  "  bg-transparent  "}`}
+					className={`first:bg-transparent hover:bg-transparent border rounded-none border-white text-white hover:text-[#D2B48C] hover:border-[#D2B48C] ml-4 ${pathname === "/contact" ? " bg-transparent  " : "  bg-transparent  "}`}
 				>
 					<Link href="/contact" className={"text-sm px-1 "}>
 						Contact us

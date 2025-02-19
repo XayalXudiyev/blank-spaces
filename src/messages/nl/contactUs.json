@@ -1,15 +1,15 @@
 {
   "SendUsYourRequest": "STUUR ONS UW AANVRAAG!",
   "Phone": "Telefoon",
-  "Email": "E-mail",
+  "Email": "*E-mail",
   "EnterEmail": "Voer uw e-mail in",
   "YourContactDetails": "Uw contactgegevens",
 
   "FirstName": "*Voornaam",
-  "LastName": "Achternaam",
+  "LastName": "*Achternaam",
   "YourMessage": "Uw bericht",
   "TypeYourMessageHere": "Typ hier uw bericht...",
-  "Country": "*Land",
+  "Country": "Land",
   "Number": "Nummer",
   "Subject": "*Onderwerp",
   "EnterSubject": "Voer onderwerp in",

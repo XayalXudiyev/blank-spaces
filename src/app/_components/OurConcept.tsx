@@ -22,7 +22,6 @@ import { useEffect, useRef, useState } from "react"
 
 import { useTranslations } from "next-intl"
 
-
 const OurConcept = () => {
 	const t = useTranslations("home")
 	const services = [
@@ -161,12 +160,6 @@ const OurConcept = () => {
 								</CarouselItem>
 							))}
 						</CarouselContent>
-						<span className="text-sm absolute top-12 -right-[4.3rem]  font-proximanova4 rotate-90">
-							{t("Event-Barspace")}
-						</span>
-						<span className="text-[7px] absolute bottom-9 -right-14  font-proximanova3 rotate-90">
-							BLANKSPACE SCHUMAN
-						</span>
 					</Carousel>
 				</motion.div>
 			</div>
@@ -206,12 +199,6 @@ const OurConcept = () => {
 									</CarouselItem>
 								))}
 							</CarouselContent>
-							<span className="text-[7px] absolute top-12 -left-10  font-proximanova3 -rotate-90">
-								BLANKSPACE SCHUMAN
-							</span>
-							<span className="text-sm absolute bottom-[6.7rem] -left-[4.31em]  font-proximanova4 -rotate-90">
-								{t("Event-Barspace")}
-							</span>
 						</Carousel>
 					</motion.div>
 					<motion.div
@@ -223,7 +210,7 @@ const OurConcept = () => {
 						className="w-1/2 flex flex-col justify-center gap-y-20 items-center pl-3"
 					>
 						{spaces.map((sp) => (
-							<div key={sp.id} onMouseEnter={() => setActiveSpace(sp)} >
+							<div key={sp.id} onMouseEnter={() => setActiveSpace(sp)}>
 								<div className="group hover:cursor-pointer">
 									<h3 className="font-proximanova3 text-[2rem] group-hover:text-[#D2B48C] ">
 										<Link href={sp.link}>{sp.name}</Link>

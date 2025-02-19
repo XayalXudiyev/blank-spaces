@@ -12,6 +12,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { useTranslations } from "next-intl"
 import React, { use } from "react"
 import { useForm } from "react-hook-form"
+import bgimg from '../../../public/Contact/Contactbg.png'
 
 export interface FormData {
 	firstName: string
@@ -42,7 +43,9 @@ const ContactForm = () => {
 	}
 
 	return (
-		<div className="flex justify-between px-32 py-14 w-full">
+		<div style={{
+			backgroundImage: `url(${bgimg.src})`
+		}} className="flex justify-between px-32 py-14 w-full bg-no-repeat  bg-center bg-cover">
 			<div>
 				<h3 className="font-proximanova3 text-[2rem] mb-3">{t("SendUsYourRequest")}</h3>
 				<ul className="flex flex-col space-y-4 pt-4 font-proximanova3">
@@ -56,7 +59,7 @@ const ContactForm = () => {
 			</div>
 
 			<div>
-				<form className="p-4" onSubmit={handleSubmit(onSubmit)}>
+				<form className="p-4 pt-0" onSubmit={handleSubmit(onSubmit)}>
 					<h2 className="mb-1 text-lg font-semibold"> {t("YourContactDetails")}</h2>
 					<div className="grid grid-cols-2 gap-4">
 						<FormInput

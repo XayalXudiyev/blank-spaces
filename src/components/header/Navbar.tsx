@@ -79,7 +79,7 @@ const Navbar = () => {
 															href={subItem.href as string}
 															className={`block py-1 px-2 text-sm font-proximanova3 ${pathname === subItem.href
 																? "text-[#D2B48C]"
-																: "hover:bg-[#ECE0CF] rounded"
+																: "hover:bg-[#ECE0CF] "
 																}`}
 														>
 															{subItem.name}
@@ -114,7 +114,7 @@ const Navbar = () => {
 				<LocaleSwitcher />
 				<Button
 					size={"sm"}
-					className={`first:bg-transparent hover:bg-transparent border rounded-none  ml-4 ${pathname === "/contact" ?  "text-white bg-transparent border-white hover:text-[#D2B48C] hover:border-[#D2B48C]" :  "text-[#D2B48C] hover:text-white hover:border-white border-[#D2B48C] bg-transparent  "}`}
+					className={`first:bg-transparent hover:bg-transparent border rounded-none border-white text-white hover:text-[#D2B48C] hover:border-[#D2B48C] ml-4 ${pathname === "/contact" ?  " bg-transparent  " :  "  bg-transparent  "}`}
 				>
 					<Link href="/contact" className={"text-sm px-1 "}>
 						Contact us

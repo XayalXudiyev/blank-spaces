@@ -9,10 +9,10 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from "@/components/ui/carousel"
-import { motion } from "framer-motion"
+import { motion, useInView } from "framer-motion"
 import { useTranslations } from "next-intl"
 import Image from "next/image"
-import React from "react"
+import React, { useRef } from "react"
 import Component1 from "../../../../../public/spaces/carousel/Component10.png"
 import Component2 from "../../../../../public/spaces/carousel/Component11.png"
 import Component3 from "../../../../../public/spaces/carousel/Component12.png"
@@ -27,6 +27,18 @@ const CarouselItems = [
 
 const BlankspaceLuxembourg = () => {
 	const t = useTranslations("spaces")
+	const ref1 = useRef(null)
+	const ref2 = useRef(null)
+	const ref3 = useRef(null)
+	const ref4 = useRef(null)
+	const ref5 = useRef(null)
+	
+
+	const inView1 = useInView(ref1)
+	const inView2 = useInView(ref2)
+	const inView3 = useInView(ref3)
+	const inView4 = useInView(ref4)
+	const inView5 = useInView(ref5)
 
 	return (
 		<div className="  relative">
@@ -37,20 +49,22 @@ const BlankspaceLuxembourg = () => {
 				<div className=" bg-[#1C1C1C]">
 					<div className="flex">
 						<motion.h2
+							ref={ref1}
 							initial={{ y: 250, opacity: 0 }}
-							whileInView={{ y: 0, opacity: 1 }}
+							animate={inView1 ? { y: 0, opacity: 1 } : { y: 250, opacity: 0 }}
 							transition={{ duration: 0.8 }}
-							viewport={{ once: true }}
+							viewport={{ once: false }}
 							className="absolute w-[90%] font-proximanova5 mb-4 top-[13%] left-16 text-[3.5rem] flex flex-col"
 						>
 							<span>Blankspace Place</span>
 							<span className="absolute left-[15%] top-[90%]">du Luxembourg</span>
 						</motion.h2>
 						<motion.div
+							ref={ref2}
 							initial={{ y: 250, opacity: 0 }}
-							whileInView={{ y: 0, opacity: 1 }}
+							animate={inView2 ? { y: 0, opacity: 1 } : { y: 250, opacity: 0 }}
 							transition={{ duration: 0.8 }}
-							viewport={{ once: true }}
+							viewport={{ once: false }}
 							className="absolute right-0 tracking-wide top-72  w-1/2  font-proximanova3"
 						>
 							<h4 className=" text-[1.9rem]  mb-4">{t("flexibleSpace")}</h4>
@@ -67,10 +81,11 @@ const BlankspaceLuxembourg = () => {
 			</div>
 			<div className="bg-[#1C1C1C] text-white">
 				<motion.div
+					ref={ref3}
 					initial={{ y: 250, opacity: 0 }}
-					whileInView={{ y: 0, opacity: 1 }}
+					animate={inView3 ? { y: 0, opacity: 1 } : { y: 250, opacity: 0 }}
 					transition={{ duration: 0.8 }}
-					viewport={{ once: true }}
+					viewport={{ once: false }}
 					className="tracking-wide  w-1/2 font-proximanova3 py-16 pl-16"
 				>
 					<h4 className=" text-[1.9rem] pr-5  mb-4">{t("equipped")}</h4>
@@ -81,10 +96,11 @@ const BlankspaceLuxembourg = () => {
 			<div className="flex flex-col">
 				<div className="flex pl-8 pr-14 mx-auto py-24 justify-center items-center select-none w-full">
 					<motion.div
+						ref={ref4}
 						initial={{ x: -300, opacity: 0 }}
-						whileInView={{ x: 0, opacity: 1 }}
+						animate={inView4 ? { x: 0, opacity: 1 } : { x: -300, opacity: 0 }}
 						transition={{ duration: 0.8 }}
-						viewport={{ once: true }}
+						viewport={{ once: false }}
 						className="ml-7 h-full flex flex-col justify-center w-[60%] bg-primary text-center px-[4rem] py-16 z-30 mr-[-40]"
 					>
 						<h3 className="font-proximanova3 text-[2rem] mb-3">{t("whyChooseUs")}</h3>
@@ -110,10 +126,11 @@ const BlankspaceLuxembourg = () => {
 						</Carousel>
 					</motion.div>
 					<motion.div
+					ref={ref5}
 						initial={{ x: 300, opacity: 0 }}
-						whileInView={{ x: 0, opacity: 1 }}
+						animate={inView5 ? { x: 0, opacity: 1 } : { x: 300, opacity: 0 }}
 						transition={{ duration: 0.8 }}
-						viewport={{ once: true }}
+						viewport={{ once: false }}
 						className="w-1/2 flex flex-col items-center relative"
 					>
 						{" "}
@@ -146,5 +163,6 @@ const BlankspaceLuxembourg = () => {
 		</div>
 	)
 }
+
 
 export default BlankspaceLuxembourg

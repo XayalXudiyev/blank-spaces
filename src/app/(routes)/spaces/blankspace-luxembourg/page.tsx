@@ -32,13 +32,17 @@ const BlankspaceLuxembourg = () => {
 	const ref3 = useRef(null)
 	const ref4 = useRef(null)
 	const ref5 = useRef(null)
-	
+	const contactFormRef = useRef<HTMLDivElement>(null)
 
 	const inView1 = useInView(ref1)
 	const inView2 = useInView(ref2)
 	const inView3 = useInView(ref3)
 	const inView4 = useInView(ref4)
 	const inView5 = useInView(ref5)
+
+	const handleScrollToContact = () => {
+		contactFormRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+	}
 
 	return (
 		<div className="  relative">
@@ -70,6 +74,7 @@ const BlankspaceLuxembourg = () => {
 							<h4 className=" text-[1.9rem]  mb-4">{t("flexibleSpace")}</h4>
 							<p className="text-sm w-[92%] leading-5">{t("flexibleSpaceText")}</p>
 							<Button
+								onClick={handleScrollToContact}
 								size={"sm"}
 								className=" font-proximanova4 mt-6  bg-transparent hover:bg-transparent border border-white rounded-none "
 							>
@@ -126,7 +131,7 @@ const BlankspaceLuxembourg = () => {
 						</Carousel>
 					</motion.div>
 					<motion.div
-					ref={ref5}
+						ref={ref5}
 						initial={{ x: 300, opacity: 0 }}
 						animate={inView5 ? { x: 0, opacity: 1 } : { x: 300, opacity: 0 }}
 						transition={{ duration: 0.8 }}
@@ -159,10 +164,11 @@ const BlankspaceLuxembourg = () => {
 					</motion.div>
 				</div>
 			</div>
-			<ContactForm />
+			<div ref={contactFormRef}>
+				<ContactForm />
+			</div>
 		</div>
 	)
 }
-
 
 export default BlankspaceLuxembourg

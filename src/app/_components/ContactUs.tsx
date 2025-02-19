@@ -18,8 +18,8 @@ const ContactUs = () => {
 			<motion.h3
 				ref={ref8}
 				initial={{ y: 200 }}
-				animate={inView8 ? { y: 0 } : { y: -200 }}
-				transition={{ duration: 1 }}
+				animate={inView8 ? { y: 0 } : { y: 200 }}
+				transition={{ duration: 0.8 }}
 				viewport={{ once: false }}
 				className="font-proximanova3 text-[2rem] text-center mb-10 "
 			>

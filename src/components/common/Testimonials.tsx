@@ -1,6 +1,7 @@
 "use client"
 
 import { Card, CardContent } from "@/components/ui/card"
+import Autoplay from "embla-carousel-autoplay"
 import useEmblaCarousel from "embla-carousel-react"
 import { useTranslations } from "next-intl"
 import Image from "next/image"
@@ -20,7 +21,6 @@ import EuropeanGreens from "../../../public/companies/european-greens.svg"
 import GreenMood from "../../../public/companies/greemood.svg"
 import Hilton from "../../../public/companies/hilton.svg"
 import KevinMurphyK from "../../../public/companies/kevin-murphy-K.svg"
-import KevinMurphy from "../../../public/companies/kevin-murphy.svg"
 import Marriage from "../../../public/companies/marriage.svg"
 import OliverWyman from "../../../public/companies/oliver-wyman.svg"
 import SolarPower from "../../../public/companies/solar-power.svg"
@@ -34,7 +34,9 @@ interface ExpandedState {
 
 function Testimonials() {
 	const t = useTranslations("testimonials")
-	const [emblaRef, emblaApi] = useEmblaCarousel({ axis: "y", loop: true })
+	const [emblaRef, emblaApi] = useEmblaCarousel({ axis: "y", loop: true }, [
+		Autoplay({ delay: 2000 }),
+	])
 	const [carouselRef, carouselApi] = useEmblaCarousel({ axis: "y", loop: true })
 	const [selectedIndex, setSelectedIndex] = useState(10)
 	const [expanded, setExpanded] = useState<ExpandedState>({})
@@ -168,12 +170,11 @@ function Testimonials() {
 	const toggleExpand = (index: number) => {
 		setExpanded((prev) => {
 			if (prev[index]) {
-				return {};
+				return {}
 			}
-			return { [index]: true };
-		});
-	};
-	
+			return { [index]: true }
+		})
+	}
 
 	const scrollTo = useCallback(
 		(index: number) => {
@@ -229,10 +230,11 @@ function Testimonials() {
 									<Button
 										key={index}
 										onClick={() => scrollTo(index)}
-										className={`rounded-full w-8 h-8 text-sm font-proximanova3 flex items-center justify-center text-black hover:bg-transparent font-medium ${index === selectedIndex
-											? "bg-transparent font-proximanova5 text-base "
-											: " bg-transparent opacity-80 "
-											}`}
+										className={`rounded-full w-8 h-8 text-sm font-proximanova3 flex items-center justify-center text-black hover:bg-transparent font-medium ${
+											index === selectedIndex
+												? "bg-transparent font-proximanova5 text-base "
+												: " bg-transparent opacity-80 "
+										}`}
 									>
 										{tml.id.toString().padStart(2, "0")}
 									</Button>
@@ -248,14 +250,22 @@ function Testimonials() {
 					<div className="flex flex-col h-[500px]">
 						{testimonials.map((tml, index) => (
 							<div key={tml.id} className="mx-5 p-4">
-								<Card className={`bg-[#ECE0CF] rounded-none  text-sm font-proximanova3 transition-all duration-1000 ${index % 2 === 0 ? "rotate-[2deg]" : "-rotate-[2deg]"
+								<Card
+									className={`bg-[#ECE0CF] rounded-none  text-sm font-proximanova3 transition-all duration-1000 ${
+										index % 2 === 0 ? "rotate-[2deg]" : "-rotate-[2deg]"
 									} "}`}
 								>
 									<CardContent className="flex flex-col items-center transition-all duration-1000 justify-center min-h-[7.8rem] text-center py-4 w-full">
 										<div
 											className={`overflow-hidden transition-all ease-in-out duration-700   ${expanded[index] ? "line-clamp-none" : "line-clamp-3"}`}
 										>
-											<p ref={(el) => { textRefs.current[index] = el; }}>{tml.description}</p>
+											<p
+												ref={(el) => {
+													textRefs.current[index] = el
+												}}
+											>
+												{tml.description}
+											</p>
 										</div>
 										<div className="flex w-1/2 ml-auto justify-between transition-all duration-1000">
 											<Button
@@ -269,15 +279,21 @@ function Testimonials() {
 												<span>{expanded[index] ? "Less" : "More"}</span>
 												<IoIosArrowDown
 													size={20}
-													className={`transition-all ease-in-out duration-700 ${expanded[index] ? "rotate-180 " : 'rotate-0'}`}
+													className={`transition-all ease-in-out duration-700 ${expanded[index] ? "rotate-180 " : "rotate-0"}`}
 												/>
 											</Button>
-											<div className={`absolute text-xs transition-all duration-1000 font-proximanova3 mt-1)] ${index % 2 === 0 ? "left-[6%]" : "right-[6%]"
-												}`}>{tml.author}</div>
+											<div
+												className={`absolute text-xs transition-all duration-1000 font-proximanova3 mt-1)] ${
+													index % 2 === 0 ? "left-[6%]" : "right-[6%]"
+												}`}
+											>
+												{tml.author}
+											</div>
 										</div>
 										<span
-											className={`absolute bg-white rounded-full w-[3.6rem] h-[3.6rem] p-1 flex shadow-[0_4px_10px_rgba(0,0,0,0.25)] ${index % 2 === 0 ? "-left-[6%]" : "-right-[6%]"
-												}`}
+											className={`absolute bg-white rounded-full w-[3.6rem] h-[3.6rem] p-1 flex shadow-[0_4px_10px_rgba(0,0,0,0.25)] ${
+												index % 2 === 0 ? "-left-[6%]" : "-right-[6%]"
+											}`}
 										>
 											<Image
 												width={0}

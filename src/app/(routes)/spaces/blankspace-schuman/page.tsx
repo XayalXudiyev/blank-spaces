@@ -21,7 +21,7 @@ const CarouselItems = [
 
 const BlankspaceSchuman = () => {
 	const t = useTranslations("spaces")
-
+	const contactFormRef = useRef<HTMLDivElement>(null)
 
 	const ref1 = useRef(null)
 	const ref2 = useRef(null)
@@ -46,6 +46,11 @@ const BlankspaceSchuman = () => {
 	const inView9 = useInView(ref9)
 	const inView10 = useInView(ref10)
 	const inView11 = useInView(ref11)
+
+	const handleScrollToContact = () => {
+		contactFormRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+	}
+
 	return (
 		<div className="  relative">
 			<div className="md:min-h-[490px] relative text-white">
@@ -76,6 +81,7 @@ const BlankspaceSchuman = () => {
 							<h4 className=" text-[1.9rem]  mb-4">{t("adaptableSpaces")}</h4>
 							<p className="text-sm w-[92%] leading-5">{t("adaptableSpacesText")}</p>
 							<Button
+								onClick={handleScrollToContact}
 								size={"sm"}
 								className=" font-proximanova4 mt-6  bg-transparent hover:bg-transparent border border-white rounded-none "
 							>
@@ -194,7 +200,6 @@ const BlankspaceSchuman = () => {
 					</motion.div>
 				</div>
 
-
 				<div className="flex pl-8 pr-14 mx-auto py-24 justify-center items-center select-none w-full">
 					<motion.div
 						ref={ref8}
@@ -289,7 +294,9 @@ const BlankspaceSchuman = () => {
 					</motion.div>
 				</div>
 			</div>
-			<ContactForm />
+			<div ref={contactFormRef}>
+				<ContactForm />
+			</div>
 		</div>
 	)
 }

@@ -1,4 +1,5 @@
 "use client"
+
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
 import Image from "next/image"
 
@@ -9,17 +10,22 @@ import Testimonials from "@/components/common/Testimonials"
 import { Button } from "@/components/ui/button"
 import { motion, useInView } from "framer-motion"
 import { useTranslations } from "next-intl"
-import img from "../../../../../public/events/corporate-meetings/1.png"
+// import img from "../../../../../public/events/corporate-meetings/1.png"
 import { useRef } from "react"
 
 const CoctailReceptions = () => {
 	const t = useTranslations("events")
 	const ref1 = useRef(null)
 	const ref2 = useRef(null)
-
+	const contactFormRef = useRef<HTMLDivElement>(null)
 
 	const inView1 = useInView(ref1)
 	const inView2 = useInView(ref2)
+
+	const handleScrollToContact = () => {
+		contactFormRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+	}
+
 	return (
 		<div>
 			<div className=" container m-auto  mt-10 mb-16 ">
@@ -38,7 +44,10 @@ const CoctailReceptions = () => {
 							<li>{t("cr-text2")}</li>
 							<li>{t("cr-text3")}</li>
 						</ul>
-						<Button className="bg-black rounded-none text-white hover:bg-black flex mx-auto h-8 font-proximanova4 p-4 ">
+						<Button
+							onClick={handleScrollToContact}
+							className="bg-black rounded-none text-white hover:bg-black flex mx-auto h-8 font-proximanova4 p-4 "
+						>
 							{t("eventButton")}
 						</Button>
 					</motion.div>
@@ -52,7 +61,7 @@ const CoctailReceptions = () => {
 						<Carousel className="basis-[55.5%] w-[650px]">
 							<CarouselContent>
 								<CarouselItem>
-									<Image src={img} height={0} width={0} alt="Img" className="" />
+									{/* <Image src={img} height={0} width={0} alt="Img" className="" /> */}
 								</CarouselItem>
 							</CarouselContent>
 						</Carousel>
@@ -62,7 +71,9 @@ const CoctailReceptions = () => {
 			<Companies />
 			<Testimonials />
 			<FAQ />
-			<ContactForm />
+			<div ref={contactFormRef}>
+				<ContactForm />
+			</div>
 		</div>
 	)
 }
